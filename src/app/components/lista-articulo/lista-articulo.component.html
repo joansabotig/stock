@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-6"*ngIf="bandera">
+			<h3 class="text-center text-primary">Lista de articulos
+      </h3>
+			<div class="list-group"  *ngFor="let Articulo of articulos">
+				<a (click)="mostrar(Articulo)" class="list-group-item list-group-item-blue">{{Articulo.nombre}}</a>
+
+			</div>
+			<br>
+		</div>
+	</div>
+</div>

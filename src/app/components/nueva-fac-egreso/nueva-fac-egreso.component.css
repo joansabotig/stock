@@ -1,0 +1,48 @@
+.card-default {
+    color: #333;
+    background: inherit;
+    background: linear-gradient(#fff,#ebebeb) repeat scroll 0 0 transparent;
+    font-weight: 600;
+    border-radius: 6px;
+}
+.container
+{
+    margin-right:0px !important;
+    margin-left:5%;
+}
+.datos
+{
+    width: 300%;
+    margin-top: 3%;
+    display: flex;
+}
+.dato
+{
+    display: flex;
+    margin-left: 5px;
+    flex-direction: row;
+    margin-left: 10%;
+}
+.form-group
+{
+    display:flex;
+    flex-direction: column;
+}
+.detalles-lista
+{
+    border: 1px;
+    border:solid;
+    border-color: rgb(143, 143, 143);
+    border-width: 5px;
+}
+.titulo
+{
+    border: 1px;
+    border:solid;
+    border-color: rgb(143, 143, 143);
+    border-width: 1px;
+}
+.items-lista
+{
+    margin-left: 5%;
+}

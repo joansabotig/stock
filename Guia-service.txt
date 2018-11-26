@@ -1,0 +1,47 @@
+se importa el http para poder conectarlo al servidor
+import { HttpClient } from '@angular/common/http';
+
+se crea una variable
+host:String = 'http://localhost:3000/';
+para facilitar el manejo de la url del servidor y poder cambiarlo.
+
+en el constrictor se llama a 
+private http:HttpClient
+dentro de los argumentos del constructor.
+
+para obtener datos con un servidor:
+se hace el metodo que retorna
+return this.http.get<Articulo[]>(this.host+'articulo');
+
+si se necesita un objeto especifico
+return this.http.get<Articulo>(this.host + 'articulo/'+id)
+
+para modificar un objeto
+return this.http.patch(this.host + 'articulo/'+arti.id,arti);
+donde "arti" seria el articulo ya editado(el id no se debe modificar).
+
+para borrar un objeto
+return this.http.delete(this.host + 'articulo/'+id)
+
+para agregar un objeto nuevo
+return this.http.post(this.host + 'articulo', arti);
+donde "arti" es el objeto nuevo.
+
+
+Redireccionar:
+en el constructor del componente iniciar el router
+private router: Router
+
+importar el router de
+import { Router } from '@angular/router';
+
+
+recibir parametros por url (route.params)
+en el constructor del componente:
+private route: ActivatedRoute
+importar
+import { ActivatedRoute} from '@angular/router';
+
+obtener el valor
+route.params['value']['id']
+

@@ -1,0 +1,126 @@
+<div *ngIf="bandera == true" class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Factura
+      <small>{{factura.numero_factura}}</small>
+      Tipo
+      <small>{{factura.tipo}}</small>
+    </h1>
+   
+  </section>
+
+  <div class="pad margin no-print">
+    <div class="callout callout-info" style="margin-bottom: 0!important;">												
+      <h4><i class="fa fa-info"></i> Laboratorio 4:</h4>
+      Cualquier inconformidad debera comunicarse dentro de los 10 dias posteriores a la fecha de recepcion, posteriormente se entiende que ha sido aceptada
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <section class="invoice">
+    <!-- title row -->
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="page-header">
+          <i class="fa fa-globe"></i> {{factura.cliente.nombre}}
+          <small class="pull-right">{{factura.fecha | date: "dd/MM/yyyy"}}  </small>
+        </h2>
+      </div><!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row invoice-info">
+      <div class="col-sm-4 invoice-col">
+        De
+        <address>
+         <strong>{{factura.cliente.nombre}}</strong><br>
+          Direccion: {{factura.cliente.direccion}}<br>
+          Localidad: {{factura.cliente.localidad}}<br>
+          Telefono: a {{factura.cliente.telefono}} <br/>
+          Email: {{factura.cliente.email}}
+        </address>
+      </div><!-- /.col -->
+      <div class="col-sm-4 invoice-col">
+        Para
+        <address>
+          <strong>{{factura.empresa.nombre}}</strong><br>
+          Direccion: {{factura.empresa.direccion}}<br>
+          Localidad: {{factura.empresa.localidad}}<br>
+          Telefono: {{factura.empresa.telefono}} <br/>
+          Email: {{factura.empresa.email}}
+        </address>
+      </div><!-- /.col -->
+      <div class="col-sm-4 invoice-col">
+        <b>Factura #{{factura.numero_factura}}</b><br/>
+        <br/>
+        <b>Orden ID:</b> {{factura.id}}<br/>
+        <b>Pagada Día:</b> {{factura.fecha_factura | date: "dd/MM/yyyy"}}<br/> <!--fecha en la que la factura se pago/recibio-->
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+
+    <!-- Empiezan los items -->
+    <div class="row">
+      <div class="col-xs-12 table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Cant</th>
+              <th>Producto</th>
+              <th>Codigo</th>
+              <th>Descripcion</th>
+              <th >IVA</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let Articulo of factura.articulos">
+            <tr>
+              <td>  {{Articulo.cantidad}}</td>
+              <td>  {{Articulo.articulo.nombre}}</td>
+              <td>  {{Articulo.articulo.codigo}} </td>
+              <td>  {{Articulo.articulo.descripcion}}</td>
+              <td>  {{Articulo.articulo.porc_iva}}%</td>
+              <td *ngIf="factura.tipo == 'A'" >  ${{Articulo.articulo.precio_venta * Articulo.cantidad}}</td>
+              <td *ngIf="factura.tipo != 'A'" >  ${{Articulo.articulo.precio_venta * Articulo.cantidad + Articulo.articulo.precio_venta * Articulo.cantidad *Articulo.articulo.porc_iva / 100}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+
+    <div class="row">
+      <!-- accepted payments column -->
+      
+      <div class="col-xs-6">
+        <p class="lead">Resumen</p>
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th style="width:50%">Subtotal:</th>
+              <td>${{factura.subtotal}}</td>
+            </tr>
+            <tr *ngIf="factura.tipo == 'A'">
+              <th>IVA (10.5%)</th>
+              <td>${{iva_10_5}}</td>
+            </tr>
+            <tr *ngIf="factura.tipo == 'A'">
+              <th>IVA (21%)</th>
+              <td>${{iva_21}}</td>
+            </tr>
+            <tr *ngIf="factura.tipo == 'A'">
+              <th >Total Iva:</th>
+              <td>${{factura.iva}}</td>
+            </tr>
+            <tr>
+              <th>Total:</th>
+              <td>${{factura.total}}</td>
+            </tr>
+          </table>
+        </div>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+
+    <!-- this row will not appear when printing -->
+    
+  </section><!-- /.content -->
+  <div class="clearfix"></div>
+</div><!-- /.content-wrapper -->

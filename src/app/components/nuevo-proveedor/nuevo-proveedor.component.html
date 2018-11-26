@@ -1,0 +1,85 @@
+<body style="bottom: 0px;">
+		<div class="container" style="margin: 0%!important;padding: 0%!important;">
+			<div class="row main">
+				<div class="main-login main-center">
+				<h5>Agregar un nuevo Proveedor</h5>
+					<form class="" method="post" action="#">
+						
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Nombre</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Nombre del proveedor"  [(ngModel)]='nombre'>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Numero de sucursal de la empresa</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Empresa del proveedor" [(ngModel)]='numero_sucursal'>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="username" class="cols-sm-2 control-label">Cuenta</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="username" id="username"  placeholder="Cuenta"  [(ngModel)]='cuenta'>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">E-mail</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="password" id="password"  placeholder="Email del proveedor"  [(ngModel)]='email'>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="confirm" class="cols-sm-2 control-label">Telefono</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="confirm" id="confirm"  placeholder="Telefono del proveedor"  [(ngModel)]='telefono'>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+								<label for="confirm" class="cols-sm-2 control-label">Direccion</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+										<input type="text" class="form-control" name="confirm" id="confirm"  placeholder="Direccion del proveedor"  [(ngModel)]='direccion'>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="confirm" class="cols-sm-2 control-label">Localidad</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+										<input type="text" class="form-control" name="confirm" id="confirm"  placeholder="Localidad del proveedor"  [(ngModel)]='localidad'>
+									</div>
+								</div>
+							</div>
+
+						<div class="form-group ">
+							<a (click)="agregar()" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Agregar</a>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</body>

@@ -1,0 +1,89 @@
+	<body >
+		<div class="container" >
+			<div class="row main">
+				<div class="main-login main-center">
+				<h5>Agregar un nuevo Articulo</h5>
+					<form class="" method="post" action="#">
+						
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Codigo</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Codigo del producto"  [(ngModel)]='codigo'>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Nombre</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Nombre del producto" [(ngModel)]='nombre'>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="username" class="cols-sm-2 control-label">Descripcion</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="username" id="username"  placeholder="Descripcion del producto"  [(ngModel)]='descripcion'>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Rubro</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="password" id="password"  placeholder="Rubro del producto"  [(ngModel)]='rubro'>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="confirm" class="cols-sm-2 control-label">Precio de compra</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="number" class="form-control" name="confirm" id="confirm"  placeholder="Precio de compra"  [(ngModel)]='precio_compra'>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+								<label for="confirm" class="cols-sm-2 control-label">Precio de Lista</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+										<input type="number" class="form-control" name="confirm" id="confirm"  placeholder="Precio de venta"  [(ngModel)]='precio_venta'>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="confirm" class="cols-sm-2 control-label">Porcentaje de IVA</label>
+								<div class="cols-sm-10">
+									<div class="input-group">
+										<select id="select_iva"  class="form-control">
+											<option value='21'>21%</option>
+											<option value='10.5'>10.5%</option>
+										</select>
+										<!-- <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span> -->
+										<!-- <input type="number" class="form-control" name="confirm" id="confirm"  placeholder="Porcentaje de iva"  [(ngModel)]='porcentaje_iva'> -->
+									</div>
+								</div>
+							</div>
+
+						<div class="form-group ">
+							<a (click)="agregar()" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Agregar</a>
+						</div>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</body>

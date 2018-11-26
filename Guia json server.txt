@@ -1,0 +1,8 @@
+crear el archivo db.json en la carpeta del proyecto
+a la altura del angular.json
+
+Agregar 
+HttpClientModule
+en los imports de "app.modules"
+y el import
+import { HttpClientModule} from '@angular/common/http';

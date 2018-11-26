@@ -1,0 +1,66 @@
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="contenedortt">
+		<nav class="navbar navbar-expand-sm   navbar-light bg-light" >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand">Controlador de Stock &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </a>
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="inicio">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="nueva_factura_egreso">Nueva venta <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="nueva_factura_ingreso">Nueva Compra <span class="sr-only">(current)</span></a>
+            </li>
+            
+           <li ngbDropdown class="nav-item dropdown dmenu">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle"  id="navbardrop" data-toggle="dropdown" style="cursor: pointer;">
+              Articulos
+            </a>
+            <div ngbDropdownMenu class="dropdown-menu sm-menu">
+              <a class="dropdown-item" href="nuevo_articulo">Nuevo articulo</a>
+              <a class="dropdown-item" href="lista_articulos">Lista de articulos</a>
+            </div>
+          </li>
+          <li ngbDropdown class="nav-item dropdown dmenu">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown"style="cursor: pointer;">
+              Proveedores
+            </a>
+            <div ngbDropdownMenu class="dropdown-menu sm-menu">
+              <a class="dropdown-item" href="nuevo_proveedor">Nuevo proveedor</a>
+              <a class="dropdown-item" href="lista_proveedores">Lista de proveedores</a>
+            </div>
+          </li>
+          <li ngbDropdown class="nav-item dropdown dmenu">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown"style="cursor: pointer;">
+              Clientes
+            </a>
+            <div ngbDropdownMenu class="dropdown-menu sm-menu">
+              <a class="dropdown-item" href="nuevo_cliente">Nuevo cliente</a>
+              <a class="dropdown-item" href="lista_clientes">Lista de clientes</a>
+            </div>
+          </li>
+          <li ngbDropdown class="nav-item dropdown dmenu">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown"style="cursor: pointer;">
+              Facturas
+            </a>
+            <div ngbDropdownMenu class="dropdown-menu sm-menu">
+              <a class="dropdown-item" href="lista_factura_ingreso">Lista de facturas de Compra</a>
+              <a class="dropdown-item" href="lista_factura_egreso">Lista de facturas de Venta</a>
+            </div>
+          </li>
+          </ul>
+        </div>
+      </nav>
+</div>
+
+
+

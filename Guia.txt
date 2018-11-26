@@ -1,0 +1,102 @@
+Iniciar con
+ng new "nombre del proyecto"
+crear una carpeta componente dentro de src/app
+crear los componentes 
+ng generate component "ruta"/"nombre componente"
+ej:
+ng generate component components/inicio
+
+solucionar posible error: 
+del "inicio.component.ts" borrar del selector 
+el  prefijo "app-"(linea 4)
+
+se puede borrar el .spec.ts (no se usa por ahora)
+
+crear una carpeta clases dentro de src/app
+crear las clases
+ng generate component "ruta"/"nombre clase"
+ej:
+ng generate class clases/persona
+
+crear una carpeta servicios dentro de src/app
+crear los servicios
+ng generate component "ruta"/"nombre servicio"
+ej:
+ng generate service services/servicio1
+
+
+agregar rutas:
+a la altura del "app.component" crear el archivo "app.routes.ts"
+
+importar el archivo router
+import { Routes } from '@angular/router';
+
+crear el router
+export const routes: Routes = [
+
+]
+
+dentro de los corchetes crear los "path" o rutas
+{   path: '' , component: InicioComponent},
+{   path: '**', redirectTo: ''},
+
+puede pasarse el id por la url para luego capturarse:
+o tener la ruta sin el id.
+(id o cualquier atributo)
+{   path: 'devolver', component: DevolverComponent},
+{   path: 'devolver/:id', component: DevolucionComponent},
+
+el nombre del componente está en el .ts del componente. 
+es el nombre de la clase.
+
+en el "app.modules.ts"
+en los imports
+agregar:
+FormsModule,
+RouterModule.forRoot(routes)
+
+y agregar los imports
+import { routes } from './app.routes';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+
+en el "app.component.html" agregar
+<router-outlet></router-outlet>
+donde se mostrara la redireccion del routes
+
+agregar bootstrap:
+comando
+npm install bootstrap --s
+
+luego en el angular.json en la parte de "styles" agregar:
+"./node_modules/bootstrap/dist/css/bootstrap.css"
+(hay 2 styles en angular.json donde se debe agregar)
+usualmente linea 75 y linea 25 o similar.
+
+
+
+Dropdowns:
+instalar:
+npm install --save @ng-bootstrap/ng-bootstrap
+
+agregar en app.modules
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+en la parte de imports:
+NgbModule.forRoot()
+
+en el html:
+en el <li> de "nav-item" se le agrega ngbDropdown antes de la clase:
+<li ngbDropdown class="nav-item dropdown dmenu">
+en el <a> de "nav-link" se le agrega ngbDropdownToggle antes de la clase:
+<a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+en el <div> de "dropdown-menu" se le agrega ngbDropdownMenu antes de la clase
+<div ngbDropdownMenu class="dropdown-menu sm-menu">
+
+
+
+
+
+
+
+

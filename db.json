@@ -1,0 +1,269 @@
+{
+  "articulo": [
+    {
+      "codigo": "0556",
+      "nombre": "Harina",
+      "descripcion": "es un polvo blanco para cocinar",
+      "rubro": "Consumible",
+      "precio_compra": 15,
+      "precio_venta": 35,
+      "stock": 0,
+      "porc_iva": 21,
+      "id": 1
+    },
+    {
+      "codigo": "0223",
+      "nombre": "zapatos",
+      "descripcion": "Para los pies",
+      "rubro": "Calzado",
+      "precio_compra": 50,
+      "precio_venta": 80,
+      "stock": 1,
+      "porc_iva": 21,
+      "id": 2
+    },
+    {
+      "codigo": "0112",
+      "nombre": "Leche",
+      "descripcion": "vacuna",
+      "rubro": "Lacteos",
+      "precio_compra": 15,
+      "precio_venta": 40,
+      "stock": 2,
+      "porc_iva": 10.5,
+      "id": 3
+    }
+  ],
+  "empresa": [
+    {
+      "id": 1,
+      "numero_sucursal": 25,
+      "nombre": "el laboratorio",
+      "direccion": "zanni 225",
+      "localidad": "parana",
+      "telefono": "453685",
+      "email": "asdas@asdasda",
+      "cuenta": "52436-52",
+      "num_factura": 0
+    }
+  ],
+  "proveedor": [
+    {
+      "nombre": "Alan Walker",
+      "direccion": "Av. Corrientes 125",
+      "localidad": "Paraná",
+      "telefono": "4223344",
+      "email": "alan@rock.com",
+      "cuenta": "0556892",
+      "numero_sucursal": "The Rock",
+      "id": 1
+    }
+  ],
+  "cliente": [
+    {
+      "nombre": "Tito Perez",
+      "direccion": "Av. Cordiba 1100",
+      "localidad": "Paraná",
+      "telefono": "4256876",
+      "email": "tito@hotmail.com",
+      "cuenta": "01126",
+      "id": 1
+    }
+  ],
+  "factura_compra": [
+    {
+      "articulos": [
+        {
+          "articulo": {
+            "codigo": "0556",
+            "nombre": "Harina",
+            "descripcion": "es un polvo blanco para cocinar",
+            "rubro": "Consumible",
+            "precio_compra": 15,
+            "precio_venta": 35,
+            "stock": 0,
+            "porc_iva": 21,
+            "id": 1
+          },
+          "cantidad": 4
+        },
+        {
+          "articulo": {
+            "codigo": "0112",
+            "nombre": "Leche",
+            "descripcion": "vacuna",
+            "rubro": "Lacteos",
+            "precio_compra": 15,
+            "precio_venta": 40,
+            "stock": 0,
+            "porc_iva": 10.5,
+            "id": 3
+          },
+          "cantidad": 5
+        },
+        {
+          "articulo": {
+            "codigo": "0223",
+            "nombre": "zapatos",
+            "descripcion": "Para los pies",
+            "rubro": "Calzado",
+            "precio_compra": 50,
+            "precio_venta": 80,
+            "stock": 0,
+            "porc_iva": 21,
+            "id": 2
+          },
+          "cantidad": 2
+        }
+      ],
+      "empresa": {
+        "nombre": "el laboratorio",
+        "direccion": "Zanni 2018",
+        "localidad": "Parana",
+        "telefono": "4200220",
+        "email": "laboratorio@programacion.com",
+        "cuenta": "15437",
+        "numero_sucursal": 1,
+        "num_factura": 0
+      },
+      "proveedor": {
+        "nombre": "Alan Walker",
+        "direccion": "Av. Corrientes 125",
+        "localidad": "Paraná",
+        "telefono": "4223344",
+        "email": "alan@rock.com",
+        "cuenta": "0556892",
+        "numero_sucursal": "The Rock",
+        "id": 1
+      },
+      "fecha": "2018-11-26T02:16:55.618Z",
+      "numero_sucursal": "The Rock",
+      "numero_factura": 1,
+      "fecha_factura": "2018-11-26T02:17:23.788Z",
+      "subtotal": 235,
+      "iva": 41.475,
+      "total": 276.475,
+      "id": 1
+    }
+  ],
+  "factura": [
+    {
+      "articulos": [
+        {
+          "articulo": {
+            "codigo": "0556",
+            "nombre": "Harina",
+            "descripcion": "es un polvo blanco para cocinar",
+            "rubro": "Consumible",
+            "precio_compra": 15,
+            "precio_venta": 35,
+            "stock": 4,
+            "porc_iva": 21,
+            "id": 1
+          },
+          "cantidad": 2
+        },
+        {
+          "articulo": {
+            "codigo": "0112",
+            "nombre": "Leche",
+            "descripcion": "vacuna",
+            "rubro": "Lacteos",
+            "precio_compra": 15,
+            "precio_venta": 40,
+            "stock": 5,
+            "porc_iva": 10.5,
+            "id": 3
+          },
+          "cantidad": 3
+        }
+      ],
+      "empresa": {
+        "nombre": "el laboratorio",
+        "direccion": "Zanni 2018",
+        "localidad": "Parana",
+        "telefono": "4200220",
+        "email": "laboratorio@programacion.com",
+        "cuenta": "15437",
+        "numero_sucursal": 1,
+        "num_factura": 1
+      },
+      "cliente": {
+        "nombre": "Tito Perez",
+        "direccion": "Av. Cordiba 1100",
+        "localidad": "Paraná",
+        "telefono": "4256876",
+        "email": "tito@hotmail.com",
+        "cuenta": "01126",
+        "id": 1
+      },
+      "fecha": "2018-11-26T02:31:01.312Z",
+      "numero_sucursal": 1,
+      "numero_factura": 2,
+      "tipo": "A",
+      "subtotal": 190,
+      "iva": 27.299999999999997,
+      "total": 217.3,
+      "id": 1
+    },
+    {
+      "articulos": [
+        {
+          "articulo": {
+            "codigo": "0223",
+            "nombre": "zapatos",
+            "descripcion": "Para los pies",
+            "rubro": "Calzado",
+            "precio_compra": 50,
+            "precio_venta": 80,
+            "stock": 2,
+            "porc_iva": 21,
+            "id": 2
+          },
+          "cantidad": 1
+        },
+        {
+          "articulo": {
+            "codigo": "0556",
+            "nombre": "Harina",
+            "descripcion": "es un polvo blanco para cocinar",
+            "rubro": "Consumible",
+            "precio_compra": 15,
+            "precio_venta": 35,
+            "stock": 2,
+            "porc_iva": 21,
+            "id": 1
+          },
+          "cantidad": 2
+        }
+      ],
+      "empresa": {
+        "nombre": "el laboratorio",
+        "direccion": "Zanni 2018",
+        "localidad": "Parana",
+        "telefono": "4200220",
+        "email": "laboratorio@programacion.com",
+        "cuenta": "15437",
+        "numero_sucursal": 1,
+        "num_factura": 1
+      },
+      "cliente": {
+        "nombre": "Tito Perez",
+        "direccion": "Av. Cordiba 1100",
+        "localidad": "Paraná",
+        "telefono": "4256876",
+        "email": "tito@hotmail.com",
+        "cuenta": "01126",
+        "id": 1
+      },
+      "fecha": "2018-11-26T02:36:16.187Z",
+      "numero_sucursal": 1,
+      "numero_factura": 3,
+      "tipo": "A",
+      "subtotal": 150,
+      "iva": 31.5,
+      "total": 181.5,
+      "id": 2
+    }
+  ]
+}
