@@ -1,10 +1,7 @@
- #playground-container {
-    
-}
+
 body, html{
     
-    background: rgb(255, 255, 255);  /* fallback for old browsers */
-    background: linear-gradient(to bottom, rgba(2, 62, 175, 0.644), rgba(255, 255, 255, 0.521));
+    background: inherit;
     font-family: 'Oxygen', sans-serif;
   
 }

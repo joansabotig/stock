@@ -15,6 +15,9 @@ import { ListaFacIngresoComponent } from './components/lista-fac-ingreso/lista-f
 import { ListaFacEgresoComponent } from './components/lista-fac-egreso/lista-fac-egreso.component';
 import { NuevaFacIngresoComponent } from './components/nueva-fac-ingreso/nueva-fac-ingreso.component';
 import { NuevaFacEgresoComponent } from './components/nueva-fac-egreso/nueva-fac-egreso.component';
+import { NuevoRubroComponent } from './components/nuevo-rubro/nuevo-rubro.component';
+import { EditarRubroComponent } from './components/editar-rubro/editar-rubro.component';
+import { ListaRubroComponent } from './components/lista-rubro/lista-rubro.component';
 export const routes: Routes = [
     {   path: 'nuevo_articulo' , component: NuevoArticuloComponent},
     {   path: 'editar_articulo/:id' , component: ModificarArticuloComponent},
@@ -31,6 +34,9 @@ export const routes: Routes = [
     {   path: 'nueva_factura_egreso' , component: NuevaFacEgresoComponent},
     {   path: 'lista_factura_ingreso' , component: ListaFacIngresoComponent},
     {   path: 'lista_factura_egreso' , component: ListaFacEgresoComponent},
+    {   path: 'nuevo_rubro' , component: NuevoRubroComponent},
+    {   path: 'modificar_rubro/:id' , component: EditarRubroComponent},
+    {   path: 'lista_rubro' , component: ListaRubroComponent},
     {   path: '' , component: InicioComponent},
     {   path: '**', redirectTo: ''}
 

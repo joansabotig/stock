@@ -1,4 +1,11 @@
 {
+  "rubro": [
+    {
+      "nombre": "Leche",
+      "descripcion": "Lacteos: Pasillo 2",
+      "id": 1
+    }
+  ],
   "articulo": [
     {
       "codigo": "0556",

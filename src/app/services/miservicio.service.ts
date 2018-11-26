@@ -6,6 +6,7 @@ import { Proveedor } from '../clases/proveedor';
 import { Articulo } from '../clases/articulo';
 import { Factura } from '../clases/factura';
 import { FacturaCompra } from '../clases/factura-compra';
+import { Rubro } from '../clases/rubro';
 @Injectable({
   providedIn: 'root'
 })
@@ -112,6 +113,31 @@ export class MiservicioService {
   {
     return this.http.post(this.host + 'cliente', clien);
   }
+  //manejo de Rubros
+  obtenerRubros()
+  {
+    return this.http.get<Rubro[]>(this.host+'rubro');
+  }
+  obtenerRubro(id:number)
+  {
+    return this.http.get<Rubro>(this.host + 'rubro/'+id)
+  }
+  borrarRubro(id:number)
+  {
+    return this.http.delete(this.host + 'rubro/'+id)
+  }
+  modificarRubro(rubro:Rubro,nombre,descripcion)
+  {
+    rubro.nombre=nombre;
+    rubro.descripcion = descripcion;
+
+    return this.http.patch(this.host + 'rubro/'+rubro.id,rubro);
+  }
+  nuevoRubro(rubro:Rubro)
+  {
+    return this.http.post(this.host + 'rubro', rubro);
+  }
+
   //manejo de empresa
   
   // obtenerEmpresa(id:number)

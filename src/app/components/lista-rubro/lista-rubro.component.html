@@ -1,3 +1,13 @@
-<p>
-  lista-rubro works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6"*ngIf="bandera">
+      <h3 class="text-center text-primary">Lista de Rubros
+      </h3>
+      <div class="list-group"  *ngFor="let Rubro of rubros">
+        <a (click)="mostrar(Rubro)" class="list-group-item list-group-item-blue">{{Rubro.nombre}}</a>
+
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
