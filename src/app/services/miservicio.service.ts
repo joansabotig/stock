@@ -32,7 +32,7 @@ export class MiservicioService {
     return this.http.delete(this.host + 'articulo/'+id)
   }
 
-  modificarArticulo(arti:Articulo, codigo:number, nombre:string, descripcion:string, rubro:string, precio_compra:number, precio_venta:number, porc_iva:number, stock:number)
+  modificarArticulo(arti:Articulo, codigo:number, nombre:string, descripcion:string, rubro:Rubro, precio_compra:number, precio_venta:number, porc_iva:number, stock:number)
   {
     arti.codigo = codigo;
     arti.nombre = nombre;

@@ -1,10 +1,9 @@
-import { Articulo } from "./articulo";
 import { Empresa } from "./empresa";
 import { Proveedor } from "./proveedor";
 import { ArticuloAgregado } from "./articulo-agregado";
 
 export class FacturaCompra {
-    fecha_factura: Date;
+    fecha_factura: Date; //fecha de pago
     id:number;
     numero_sucursal:number;
     numero_factura:number;
@@ -14,7 +13,7 @@ export class FacturaCompra {
     subtotal:number;
     empresa:Empresa;
     proveedor:Proveedor;
-    fecha:Date;
+    fecha:Date; //fecha de emision de la factura
     tipo:String;
     constructor(articulos:ArticuloAgregado[], empresa:Empresa,proveedor:Proveedor, numero_factura,fecha_factura:Date,tipo:String)
     {

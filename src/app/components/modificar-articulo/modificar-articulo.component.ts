@@ -3,6 +3,7 @@ import { MiservicioService } from 'src/app/services/miservicio.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Articulo } from 'src/app/clases/articulo';
 import { injectViewContainerRef } from '@angular/core/src/render3';
+import { Rubro } from 'src/app/clases/rubro';
 
 @Component({
   selector: 'modificar-articulo',
@@ -13,11 +14,12 @@ export class ModificarArticuloComponent implements OnInit {
   codigo:number;
   nombre:string;
   descripcion:string;
-  rubro:string;
+  rubro:Rubro;
   precio_compra:number;
   precio_venta:number;
   porcentaje_iva:number;
   articulo_actual:Articulo;
+  rubros:Rubro[];
 
   constructor(private servicio:MiservicioService,private route: ActivatedRoute,private router: Router) 
   {
@@ -26,6 +28,7 @@ export class ModificarArticuloComponent implements OnInit {
         this.articulo_actual = data;
         this.iniciar();
       })
+      servicio.obtenerRubros().subscribe(data=>{this.rubros = data});
   }
 
   ngOnInit() {
@@ -46,6 +49,16 @@ export class ModificarArticuloComponent implements OnInit {
   }
   modificar()
   {
+    var sel = (<HTMLInputElement>document.getElementById('select_rubro')).value;
+    for(let i  =0; i<this.rubros.length; i++)
+    {
+      if(this.rubros[i].id.toString() == sel)
+      {
+        this.rubro = this.rubros[i];
+      }
+    }
+
+
     this.servicio.modificarArticulo(this.articulo_actual,this.codigo,this.nombre,this.descripcion,this.rubro,this.precio_compra,this.precio_venta,this.porcentaje_iva,this.articulo_actual.stock)
     .subscribe(data=>{this.router.navigate(['/lista_articulos']);})
   }

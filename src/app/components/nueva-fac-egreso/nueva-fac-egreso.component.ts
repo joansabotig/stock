@@ -21,7 +21,6 @@ export class NuevaFacEgresoComponent implements OnInit {
   bandera_cliente:boolean = false;//cambiar
   anio_maximo = (new Date()).getFullYear()  ;
   numero_factura:number; 
-  tipo_factura:string="A";
   empresa:Empresa =this.service.empresa;
   cliente:Cliente;
   clientes:Cliente[]=[];

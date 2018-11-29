@@ -1,3 +1,20 @@
-<p>
-  lista-fac-egreso works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6"*ngIf="bandera">
+      <h3 class="text-center text-primary">Lista de Facturas de Venta
+      </h3>
+      <div class="list-group"  *ngFor="let Factura of facturas">
+        <a (click)="mostrar(Factura)" class="list-group-item list-group-item-blue">
+          {{Factura.fecha |  date: "dd/MM/yyyy"}} 
+
+          - n°{{Factura.numero_sucursal}}_{{Factura.numero_factura}}
+          - {{Factura.cliente.nombre}} 
+          - ${{Factura.total}} 
+          - Tipo: {{Factura.tipo}}
+        </a>
+
+      </div>
+      <br>
+    </div>
+  </div>
+</div>

@@ -1,18 +1,22 @@
 .card-default {
     color: #333;
-    background: inherit;
     background: linear-gradient(#fff,#ebebeb) repeat scroll 0 0 transparent;
     font-weight: 600;
     border-radius: 6px;
 }
 .container
 {
+    width: 100% !important;
+    min-width: 100%;
     margin-right:0px !important;
-    margin-left:5%;
+    background-image: url('http://www.conmdemasaje.es/wp-content/uploads/2014/10/fondo-azul-1.jpg');
+
 }
+
+
 .datos
 {
-    width: 300%;
+    width: 100%;
     margin-top: 3%;
     display: flex;
 }
@@ -45,4 +49,8 @@
 .items-lista
 {
     margin-left: 5%;
+}
+.text-center
+{
+    color:rgb(168, 172, 168);
 }

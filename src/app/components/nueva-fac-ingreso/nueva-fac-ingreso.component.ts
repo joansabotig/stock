@@ -23,7 +23,6 @@ export class NuevaFacIngresoComponent implements OnInit {
   bandera_proveedor:boolean = false;//cambiar
   anio_maximo = (new Date()).getFullYear()  ;
   numero_factura:number = 1 ;
-  tipo_factura:string="A";
   empresa:Empresa;
   proveedor:Proveedor=null;
   proveedores:Proveedor[];
@@ -72,7 +71,8 @@ export class NuevaFacIngresoComponent implements OnInit {
     if(this.verificar_facutra())
     {
       this.tipo = (<HTMLInputElement>document.getElementById("select_tipo")).value;
-      factura = new FacturaCompra(this.articulos_agregados,this.empresa,this.proveedor, this.numero_factura,this.fecha_factura,this.tipo )
+      console.log(this.tipo)
+      factura = new FacturaCompra(this.articulos_agregados,this.empresa,this.proveedor, this.numero_factura,this.fecha_factura,this.tipo)
       this.service.nuevoFacturaCompra(factura).subscribe(data=>{},err=>console.log(err));
       this.actualizar_stock();
       this.redireccionar_a_vista();

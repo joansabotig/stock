@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MiservicioService } from 'src/app/services/miservicio.service';
 import { Articulo } from 'src/app/clases/articulo';
 import { Router } from '@angular/router';
+import { Rubro } from 'src/app/clases/rubro';
 
 @Component({
   selector: 'nuevo-articulo',
@@ -10,20 +11,32 @@ import { Router } from '@angular/router';
 })
 export class NuevoArticuloComponent implements OnInit {
 
-  constructor(private servicio:MiservicioService,private router:Router) { }
+  constructor(private servicio:MiservicioService,private router:Router){
+    servicio.obtenerRubros().subscribe(data=>{this.rubros=data});
+   }
   codigo:number;
   nombre:string;
   descripcion:string;
-  rubro:string;
+  rubro:Rubro;
   precio_compra:number;
   precio_venta:number;
   porcentaje_iva:number;
+  rubros:Rubro[];
 
   ngOnInit() {
   }
   
   agregar()
   {
+    var sel = (<HTMLInputElement>document.getElementById('select_rubro')).value;
+    for(let i  =0; i<this.rubros.length; i++)
+    {
+      if(this.rubros[i].id.toString() == sel)
+      {
+        this.rubro = this.rubros[i];
+      }
+    }
+    
     var opc_iva = (<HTMLInputElement>document.getElementById('select_iva')).value;
     if(opc_iva == '21')
     {

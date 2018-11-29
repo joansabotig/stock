@@ -30,12 +30,16 @@ clear:both
 /* .layout-boxed{
     background:url('../img/boxed-bg.jpg') repeat fixed
 } */
+.content-wrapper
+{
+    margin-left: 0px !important;
+}
 .content-wrapper,.right-side,.main-footer{
     -webkit-transition:-webkit-transform .3s ease-in-out,margin .3s ease-in-out;
     -moz-transition:-moz-transform .3s ease-in-out,margin .3s ease-in-out;
     -o-transition:-o-transform .3s ease-in-out,margin .3s ease-in-out;
     transition:transform .3s ease-in-out,margin .3s ease-in-out;
-    margin-left:230px;
+    margin-left: 0px !important;
     z-index:820
 }
 .layout-top-nav .content-wrapper,.layout-top-nav .right-side,.layout-top-nav .main-footer{
@@ -121,7 +125,7 @@ a:hover,a:active,a:focus{
 .main-header>.navbar{
     -webkit-transition:margin-left .3s ease-in-out;
     -o-transition:margin-left .3s ease-in-out;transition:margin-left .3s ease-in-out;
-    margin-bottom:0;margin-left:230px;border:none;min-height:50px;border-radius:0
+    margin-bottom:0;margin-left:0px;border:none;min-height:50px;border-radius:0
 }
 .layout-top-nav .main-header>.navbar{
     margin-left:0!important

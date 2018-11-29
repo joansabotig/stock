@@ -14,7 +14,7 @@
       "rubro": "Consumible",
       "precio_compra": 15,
       "precio_venta": 35,
-      "stock": 0,
+      "stock": 1,
       "porc_iva": 21,
       "id": 1
     },
@@ -39,6 +39,21 @@
       "stock": 2,
       "porc_iva": 10.5,
       "id": 3
+    },
+    {
+      "codigo": "005",
+      "nombre": "prueba",
+      "descripcion": "este es un producto de prueba",
+      "rubro": {
+        "nombre": "Leche",
+        "descripcion": "Lacteos: Pasillo 2",
+        "id": 1
+      },
+      "precio_compra": 50,
+      "precio_venta": 80,
+      "stock": 1,
+      "porc_iva": 21,
+      "id": 4
     }
   ],
   "empresa": [
@@ -140,17 +155,160 @@
         "telefono": "4223344",
         "email": "alan@rock.com",
         "cuenta": "0556892",
-        "numero_sucursal": "The Rock",
+        "numero_sucursal": "5",
         "id": 1
       },
       "fecha": "2018-11-26T02:16:55.618Z",
-      "numero_sucursal": "The Rock",
+      "numero_sucursal": "5",
       "numero_factura": 1,
       "fecha_factura": "2018-11-26T02:17:23.788Z",
       "subtotal": 235,
       "iva": 41.475,
       "total": 276.475,
       "id": 1
+    },
+    {
+      "articulos": [
+        {
+          "articulo": {
+            "codigo": "005",
+            "nombre": "prueba",
+            "descripcion": "este es un producto de prueba",
+            "rubro": {
+              "nombre": "Leche",
+              "descripcion": "Lacteos: Pasillo 2",
+              "id": 1
+            },
+            "precio_compra": 50,
+            "precio_venta": 80,
+            "stock": 0,
+            "porc_iva": 21,
+            "id": 4
+          },
+          "cantidad": 1
+        }
+      ],
+      "empresa": {
+        "nombre": "el laboratorio",
+        "direccion": "Zanni 2018",
+        "localidad": "Parana",
+        "telefono": "4200220",
+        "email": "laboratorio@programacion.com",
+        "cuenta": "15437",
+        "numero_sucursal": 1,
+        "num_factura": 0
+      },
+      "proveedor": {
+        "nombre": "Alan Walker",
+        "direccion": "Av. Corrientes 125",
+        "localidad": "Paraná",
+        "telefono": "4223344",
+        "email": "alan@rock.com",
+        "cuenta": "0556892",
+        "numero_sucursal": "The Rock",
+        "id": 1
+      },
+      "fecha": "2018-11-27T00:11:57.311Z",
+      "numero_sucursal": "The Rock",
+      "numero_factura": 5,
+      "fecha_factura": "2018-11-27T00:12:23.282Z",
+      "subtotal": 50,
+      "iva": 10.5,
+      "total": 60.5,
+      "id": 2
+    },
+    {
+      "articulos": [
+        {
+          "articulo": {
+            "codigo": "0112",
+            "nombre": "Leche",
+            "descripcion": "vacuna",
+            "rubro": "Lacteos",
+            "precio_compra": 15,
+            "precio_venta": 40,
+            "stock": 1,
+            "porc_iva": 10.5,
+            "id": 3
+          },
+          "cantidad": 1
+        }
+      ],
+      "empresa": {
+        "nombre": "el laboratorio",
+        "direccion": "Zanni 2018",
+        "localidad": "Parana",
+        "telefono": "4200220",
+        "email": "laboratorio@programacion.com",
+        "cuenta": "15437",
+        "numero_sucursal": 1,
+        "num_factura": 0
+      },
+      "proveedor": {
+        "nombre": "Alan Walker",
+        "direccion": "Av. Corrientes 125",
+        "localidad": "Paraná",
+        "telefono": "4223344",
+        "email": "alan@rock.com",
+        "cuenta": "0556892",
+        "numero_sucursal": "The Rock",
+        "id": 1
+      },
+      "fecha": "2018-11-27T00:14:04.048Z",
+      "numero_sucursal": "The Rock",
+      "numero_factura": 1,
+      "fecha_factura": "2018-11-27T00:14:13.665Z",
+      "subtotal": 15,
+      "iva": 1.575,
+      "total": 16.575,
+      "id": 3
+    },
+    {
+      "articulos": [
+        {
+          "articulo": {
+            "codigo": "0556",
+            "nombre": "Harina",
+            "descripcion": "es un polvo blanco para cocinar",
+            "rubro": "Consumible",
+            "precio_compra": 15,
+            "precio_venta": 35,
+            "stock": 0,
+            "porc_iva": 21,
+            "id": 1
+          },
+          "cantidad": 1
+        }
+      ],
+      "empresa": {
+        "nombre": "el laboratorio",
+        "direccion": "Zanni 2018",
+        "localidad": "Parana",
+        "telefono": "4200220",
+        "email": "laboratorio@programacion.com",
+        "cuenta": "15437",
+        "numero_sucursal": 1,
+        "num_factura": 0
+      },
+      "proveedor": {
+        "nombre": "Alan Walker",
+        "direccion": "Av. Corrientes 125",
+        "localidad": "Paraná",
+        "telefono": "4223344",
+        "email": "alan@rock.com",
+        "cuenta": "0556892",
+        "numero_sucursal": "The Rock",
+        "id": 1
+      },
+      "fecha": "2018-11-27T00:14:51.503Z",
+      "numero_sucursal": "The Rock",
+      "numero_factura": 1,
+      "tipo": "A",
+      "fecha_factura": "2018-11-27T00:14:58.882Z",
+      "subtotal": 15,
+      "iva": 3.15,
+      "total": 18.15,
+      "id": 4
     }
   ],
   "factura": [
@@ -271,6 +429,51 @@
       "iva": 31.5,
       "total": 181.5,
       "id": 2
+    },
+    {
+      "articulos": [
+        {
+          "articulo": {
+            "codigo": "0112",
+            "nombre": "Leche",
+            "descripcion": "vacuna",
+            "rubro": "Lacteos",
+            "precio_compra": 15,
+            "precio_venta": 40,
+            "stock": 2,
+            "porc_iva": 10.5,
+            "id": 3
+          },
+          "cantidad": 1
+        }
+      ],
+      "empresa": {
+        "nombre": "el laboratorio",
+        "direccion": "Zanni 2018",
+        "localidad": "Parana",
+        "telefono": "4200220",
+        "email": "laboratorio@programacion.com",
+        "cuenta": "15437",
+        "numero_sucursal": 1,
+        "num_factura": 1
+      },
+      "cliente": {
+        "nombre": "Tito Perez",
+        "direccion": "Av. Cordiba 1100",
+        "localidad": "Paraná",
+        "telefono": "4256876",
+        "email": "tito@hotmail.com",
+        "cuenta": "01126",
+        "id": 1
+      },
+      "fecha": "2018-11-26T23:54:48.389Z",
+      "numero_sucursal": 1,
+      "numero_factura": 4,
+      "tipo": "A",
+      "subtotal": 40,
+      "iva": 4.2,
+      "total": 44.2,
+      "id": 3
     }
   ]
 }

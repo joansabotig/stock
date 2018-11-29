@@ -6,12 +6,14 @@
 }
 .container
 {
+    width: 100% !important;
+    min-width: 100%;
     margin-right:0px !important;
-    margin-left:5%;
+    background-image: url('http://www.conmdemasaje.es/wp-content/uploads/2014/10/fondo-azul-1.jpg');
 }
 .datos
 {
-    width: 300%;
+    width: 100%;
     margin-top: 3%;
     display: flex;
 }
@@ -40,6 +42,10 @@
     border:solid;
     border-color: rgb(143, 143, 143);
     border-width: 1px;
+}
+.text-center
+{
+    color:rgb(168, 172, 168);
 }
 .items-lista
 {

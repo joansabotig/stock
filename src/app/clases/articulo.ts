@@ -1,16 +1,17 @@
 import { concat } from "rxjs";
+import { Rubro } from "./rubro";
 
 export class Articulo {
     id:number;
     codigo:number;
     nombre:string;
     descripcion:string;
-    rubro:string;
+    rubro:Rubro;
     precio_compra:number;
     precio_venta:number;
     stock:number;
     porc_iva:number;
-    constructor(codigo:number, nombre:string, descripcion:string, rubro:string, precio_compra:number, precio_venta:number, porc_iva:number)
+    constructor(codigo:number, nombre:string, descripcion:string, rubro:Rubro, precio_compra:number, precio_venta:number, porc_iva:number)
     {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -21,9 +22,6 @@ export class Articulo {
         this.stock = 0;
         this.porc_iva = porc_iva
     }
-    toString()
-    {
-        return concat(this.nombre,this.rubro);
-    }
+    
     
 }
