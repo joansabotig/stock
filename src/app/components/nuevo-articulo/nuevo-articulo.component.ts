@@ -47,10 +47,9 @@ export class NuevoArticuloComponent implements OnInit {
       this.porcentaje_iva = 10.5;
     }
 
-    let articulo:Articulo = new Articulo(this.codigo,this.nombre,this.descripcion,this.rubro, this.precio_compra,this.precio_venta,this.porcentaje_iva);
+    let articulo:Articulo = new Articulo(this.codigo,this.nombre,this.descripcion,this.rubro.id, this.precio_compra,this.precio_venta,this.porcentaje_iva);
     this.servicio.nuevoArticulo(articulo).subscribe(data=>
       {
-        console.log('se agrego el articulo');
         this.router.navigate(['/lista_articulos']);
       },
       err=>console.log(err));

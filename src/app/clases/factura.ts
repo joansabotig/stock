@@ -1,33 +1,33 @@
-import { Articulo } from "./articulo";
-import { Empresa } from "./empresa";
-import { Cliente } from "./cliente";
-import { Proveedor } from "./proveedor";
-import { ArticuloAgregado } from "./articulo-agregado";
-
 export class Factura {
-    id:number;
-    numero_sucursal:number;
-    numero_factura:number;
-    articulos:ArticuloAgregado[] = [];
-    total:number;
-    iva:number;
-    subtotal:number;
-    empresa:Empresa;
-    cliente:Cliente;
-    fecha:Date;
-    tipo:String;
-    constructor(articulos:ArticuloAgregado[], empresa:Empresa,cliente:Cliente, fecha:Date,tipo:String, numero_factura:number)
+    id:number;//
+    numero_sucursal:number;//
+    numero_factura:number;//
+    total:number;//
+    iva:number;//
+    subtotal:number;//
+    clienteId:number//-----
+    fecha:Date;//
+    tipo:String;//
+    constructor(
+        numero_sucursal:number,
+        numero_factura:number,
+        total:number,
+        iva:number,
+        subtotal:number,
+        clienteId:number, 
+        fecha:Date,
+        tipo:String)
     {
-        this.empresa = empresa;
-        this.cliente = cliente;
-        this.fecha = fecha;
-        this.numero_sucursal = empresa.numero_sucursal;
-        this.numero_factura = empresa.getNumFactura();
-        this.articulos = articulos;
-        this.tipo = tipo;
+        this.numero_sucursal = numero_sucursal;
         this.numero_factura = numero_factura;
-        this.calcular();
+        this.total = total;
+        this.iva = iva;
+        this.subtotal=subtotal;
+        this.clienteId = clienteId;
+        this.fecha = fecha;
+        this.tipo = tipo;
     }
+    /*
     calcular()
     {
         let acum_subtotal:number = 0;
@@ -44,5 +44,6 @@ export class Factura {
         this.iva = acum_iva;
         this.total = this.subtotal + this.iva;
     }
+    */
     
 }

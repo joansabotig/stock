@@ -38,7 +38,11 @@ export class ModificarArticuloComponent implements OnInit {
   this.codigo=this.articulo_actual.codigo;
   this.nombre=this.articulo_actual.nombre;
   this.descripcion=this.articulo_actual.descripcion;
-  this.rubro=this.articulo_actual.rubro;
+  this.servicio.obtenerRubro(this.articulo_actual.rubroId).subscribe(data=>{
+    this.rubro = data;
+    (<HTMLInputElement>document.getElementById('select_rubro')).value = data.id.toString();
+  })
+
   this.precio_compra=this.articulo_actual.precio_compra;
   this.precio_venta=this.articulo_actual.precio_venta;
   this.porcentaje_iva=this.articulo_actual.porc_iva;
@@ -59,7 +63,7 @@ export class ModificarArticuloComponent implements OnInit {
     }
 
 
-    this.servicio.modificarArticulo(this.articulo_actual,this.codigo,this.nombre,this.descripcion,this.rubro,this.precio_compra,this.precio_venta,this.porcentaje_iva,this.articulo_actual.stock)
+    this.servicio.modificarArticulo(this.articulo_actual,this.codigo,this.nombre,this.descripcion,this.rubro.id,this.precio_compra,this.precio_venta,this.porcentaje_iva,this.articulo_actual.stock)
     .subscribe(data=>{this.router.navigate(['/lista_articulos']);})
   }
 

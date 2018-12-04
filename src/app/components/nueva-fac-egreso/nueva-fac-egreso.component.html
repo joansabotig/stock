@@ -153,7 +153,10 @@
                       <h4>Detalles de la lista:</h4>  
                     </div>
                     <div class="items-lista">
-                        <h5 *ngFor="let ArticuloAgregado of articulos_agregados"> Cantidad: {{ArticuloAgregado.cantidad}} - Articulo: {{ArticuloAgregado.articulo.nombre}}</h5>
+                        <h5 *ngFor="let Articulo of articulos_mostrar"> Cantidad: {{Articulo.cantidad}} - Articulo: {{Articulo.articulo.nombre}}
+                        <button (click)="quitar(Articulo)" class="btn btn-danger">X</button></h5>
+                        
+        
                     </div>
                 </div>
         </div>
@@ -200,18 +203,18 @@
 <!-- empieza  la seccion de seleccionar el proveedor ----------------------------------------------------------- -->
 <div *ngIf="bandera_cliente == true" >
     
-    <div class="container">
+    <div class="container" style="height: 100vh;">
         <div class="row">      
             <div class="col-md-12">           
                 <div class="table-responsive" >         
                     <table id="mytable" class="table table-bordred table-striped" >
-                        <thead>   
+                        <thead style="color:white">   
                             <th>Nombre</th>
                             <th>Localidad</th>
                             <th>Cuenta</th>     
                             <th>Seleccionar</th>   
                         </thead>
-                        <tbody *ngFor="let Cliente of clientes" >
+                        <tbody *ngFor="let Cliente of clientes" style="color:white" >
                             <tr>
                             <td>{{Cliente.nombre}}</td>
                             <td>{{Cliente.localidad}}</td>

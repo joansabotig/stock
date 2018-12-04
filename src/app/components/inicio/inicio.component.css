@@ -1,0 +1,264 @@
+/* animacion */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .base {
+    width: 500px;
+    border-top: 5px solid gray;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    padding: 0 0 30px;
+  }
+  
+  .holder {
+    width: 30px;
+    height: 20px;
+    background: black;
+    margin: auto;
+    border-radius: 0 0 50% 50%;
+  }
+  
+  .thread {
+    display: inline-block;
+    width: 2px;
+    height: 100px;
+    background: black;
+    border-radius: 5px;
+    position: relative;
+    transform-origin: 50% 0;
+    animation: moveIt 3.5s ease-in-out infinite;
+  }
+  .shadow {
+    width: 30px;
+    height: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    margin: 50px auto 0;
+    animation: moveShade 1.75s ease-in-out alternate infinite;
+  }
+  .thread:after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: red;
+    border: 2px solid white;
+    top: -4.5px;
+    left: -3.5px;
+  }
+  
+  .knob {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: -18px;
+    left: -4.5px;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 50%;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .pendulum {
+     width: 160px;
+    background: -moz-radial-gradient(circle at 70% 35%, white, #0586d1 30%, #0063c0 50%);
+    background: -webkit-radial-gradient(circle at 70% 35%, white, #0586d1 30%, #0063c0 50%);
+    background: -o-radial-gradient(circle at 70% 35%, white, #0586d1 30%, #0063c0 50%);
+    background: -ms-radial-gradient(circle at 70% 35%, white, #0586d1 30%, #0063c0 50%);
+    background: radial-gradient(circle at 70% 35%, white, #0586d1 30%, #0063c0 50%);
+      border-radius: 10%;
+      position: absolute;
+      bottom: -37px;
+      left: -77px;
+      font-size: 20px;
+      padding: 10px 20px;
+  }
+  
+ 
+  
+  @keyframes moveIt {
+    0%, 100% {
+      transform: rotate(45deg);
+    }
+    50% {
+      transform: rotate(-45deg);
+    }
+  }
+  
+  @keyframes moveShade {
+    0% {
+      transform: translateX(-220px) scale(1.4, .5);
+      filter: blur(20px);
+    }
+    50% {
+      filter: blur(3px);
+    }
+    100% {
+      transform: translateX(220px) scale(1.4, .5);
+      filter: blur(20px);
+    }
+  }
+/* Termina animacion */
+.plate{color:rgb(255, 255, 255);background: rgb(0, 79, 250);padding: 5px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius:5px;}
+
+body{padding-top:20px}
+
+.pricing-table .plan {
+  border-radius: 5px;
+  text-align: center;
+  background-color: #f3f3f3;
+  -moz-box-shadow: 0 0 6px 2px #b0b2ab;
+  -webkit-box-shadow: 0 0 6px 2px #b0b2ab;
+  box-shadow: 0 0 6px 2px #b0b2ab;
+}
+ 
+ .plan:hover {
+  background-color: #fff;
+  -moz-box-shadow: 0 0 12px 3px #b0b2ab;
+  -webkit-box-shadow: 0 0 12px 3px #b0b2ab;
+  box-shadow: 0 0 12px 3px #b0b2ab;
+}
+ 
+ .plan {
+  padding: 20px;
+  color: #C0C0C0;
+  background-color: #5e5f59;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+  
+.plan-name-bronze {
+  padding: 20px;
+  color: #fff;
+  background-color: rgb(30, 41, 102);
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+ }
+  
+.plan-name-silver {
+  padding: 20px;
+  color: #fff;
+  background-color: #C0C0C0;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+ }
+  
+.plan-name-gold {
+  padding: 20px;
+  color: #fff;
+  background-color: rgb(0, 89, 255);
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  } 
+  
+.pricing-table-bronze  {
+  padding: 20px;
+  color: #fff;
+  background-color: #012e81;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+  
+.pricing-table .plan .plan-name span {
+  font-size: 20px;
+}
+ 
+.pricing-table .plan ul {
+  list-style: none;
+  margin: 0;
+  -moz-border-radius: 0 0 5px 5px;
+  -webkit-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+}
+ 
+.pricing-table .plan ul li.plan-feature {
+  padding: 15px 10px;
+  border-top: 1px solid #c5c8c0;
+}
+ 
+.pricing-three-column {
+  margin: 0 auto;
+  width: 80%;
+}
+ 
+.pricing-variable-height .plan {
+  float: none;
+  margin-left: 2%;
+  vertical-align: bottom;
+  display: inline-block;
+  zoom:1;
+  *display:inline;
+}
+ 
+.plan-mouseover .plan-name {
+  background-color: #4e9a06 !important;
+}
+ 
+.btn-plan-select {
+  padding: 8px 25px;
+  font-size: 18px;
+}
+/* --------------------------- */
+
+.container {
+
+    background-image: url('http://www.fondosblackberry.com/user-content/uploads/wall/mid/78/blue_vertical_linesceleste.jpg');
+    min-width: 100%;
+    min-height: 100% !important;
+    background-size: cover;
+    position: absolute;
+  }
+  
+  .panel.panel-pink {
+    border-radius: 0px;
+    box-shadow: 0px 0px 10px #888;
+    border-color: #EF5160;
+  }
+  .panel.panel-pink .panel-heading {
+    border-radius: 0px;
+    color: #FFF;
+    background-color: #EF5160;
+  }
+  .panel.panel-pink .panel-body {
+    background-color: #F2F2F2;
+    color: #4D4D4D;
+  }
+  
+  .panel.panel-blue {
+    border-radius: 0px;
+    box-shadow: 0px 0px 10px #888;
+    border-color: #266590;
+  }
+  .panel.panel-blue .panel-heading {
+    border-radius: 0px;
+    color: #FFF;
+    background-color: #266590;
+  }
+  .panel.panel-blue .panel-body {
+    background-color: #F2F2F2;
+    color: #4D4D4D;
+  }
+  
+  .panel.panel-yellow {
+    border-radius: 0px;
+    box-shadow: 0px 0px 10px #888;
+    border-color: #EFA13D;
+  }
+  .panel.panel-yellow .panel-heading {
+    border-radius: 0px;
+    color: #FFF;
+    background-color: #EFA13D;
+  }
+  .panel.panel-yellow .panel-body {
+    background-color: #F2F2F2;
+    color: #4D4D4D;
+  }

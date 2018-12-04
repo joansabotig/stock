@@ -23,7 +23,7 @@
     <div class="row">
       <div class="col-xs-12">
         <h2 class="page-header">
-          <i class="fa fa-globe"></i> {{factura.cliente.nombre}}
+          <i class="fa fa-globe"></i> {{cliente.nombre}}
           <small class="pull-right">{{factura.fecha | date: "dd/MM/yyyy"}}  </small>
         </h2>
       </div><!-- /.col -->
@@ -33,28 +33,28 @@
       <div class="col-sm-4 invoice-col">
         De
         <address>
-         <strong>{{factura.cliente.nombre}}</strong><br>
-          Direccion: {{factura.cliente.direccion}}<br>
-          Localidad: {{factura.cliente.localidad}}<br>
-          Telefono: a {{factura.cliente.telefono}} <br/>
-          Email: {{factura.cliente.email}}
+         <strong>{{cliente.nombre}}</strong><br>
+          Direccion: {{cliente.direccion}}<br>
+          Localidad: {{cliente.localidad}}<br>
+          Telefono: a {{cliente.telefono}} <br/>
+          Email: {{cliente.email}}
         </address>
       </div><!-- /.col -->
       <div class="col-sm-4 invoice-col">
         Para
         <address>
-          <strong>{{factura.empresa.nombre}}</strong><br>
-          Direccion: {{factura.empresa.direccion}}<br>
-          Localidad: {{factura.empresa.localidad}}<br>
-          Telefono: {{factura.empresa.telefono}} <br/>
-          Email: {{factura.empresa.email}}
+          <strong>{{empresa.nombre}}</strong><br>
+          Direccion: {{empresa.direccion}}<br>
+          Localidad: {{empresa.localidad}}<br>
+          Telefono: {{empresa.telefono}} <br/>
+          Email: {{empresa.email}}
         </address>
       </div><!-- /.col -->
       <div class="col-sm-4 invoice-col">
         <b>Factura #{{factura.numero_factura}}</b><br/>
         <br/>
         <b>Orden ID:</b> {{factura.id}}<br/>
-        <b>Pagada Día:</b> {{factura.fecha_factura | date: "dd/MM/yyyy"}}<br/> <!--fecha en la que la factura se pago/recibio-->
+        <b>Pagada Día:</b> {{factura.fecha | date: "dd/MM/yyyy"}}<br/> <!--fecha en la que la factura se pago/recibio-->
       </div><!-- /.col -->
     </div><!-- /.row -->
 
@@ -72,7 +72,7 @@
               <th>Subtotal</th>
             </tr>
           </thead>
-          <tbody *ngFor="let Articulo of factura.articulos">
+          <tbody *ngFor="let Articulo of articulos_mostrar">
             <tr>
               <td>  {{Articulo.cantidad}}</td>
               <td>  {{Articulo.articulo.nombre}}</td>
@@ -80,7 +80,7 @@
               <td>  {{Articulo.articulo.descripcion}}</td>
               <td>  {{Articulo.articulo.porc_iva}}%</td>
               <td *ngIf="factura.tipo == 'A'" >  ${{Articulo.articulo.precio_venta * Articulo.cantidad}}</td>
-              <td *ngIf="factura.tipo != 'A'" >  ${{Articulo.articulo.precio_venta * Articulo.cantidad + Articulo.articulo.precio_venta * Articulo.cantidad *Articulo.articulo.porc_iva / 100}}</td>
+              <td *ngIf="factura.tipo == 'A'">  ${{Articulo.articulo.precio_venta * Articulo.cantidad + Articulo.articulo.precio_venta * Articulo.cantidad *Articulo.articulo.porc_iva / 100}}</td>
             </tr>
           </tbody>
         </table>

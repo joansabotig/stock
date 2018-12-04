@@ -1,3 +1,84 @@
-<p>
-  inicio works!
-</p>
+<div class="container" *ngIf="bandera">
+
+    <div class="base">
+        <div class="holder"></div>
+        <div class="thread">
+          <div class="knob"></div>
+          <div class="pendulum">Stock controller</div>
+        </div>
+        <div class="shadow"></div>
+      </div>	
+
+
+  
+    
+      
+      <div class="row-fluid pricing-table pricing-three-column">
+
+          <div class="span4 plan" >
+            <div class="plan-name-bronze">
+              <h2>Movimientos de dinero</h2>
+            </div>
+            <ul>
+                <div class="col col-md-5" >
+                    
+                        Gastos: <span class="pull-right strong">${{total_gastos}}</span>
+                         <div class="progress">
+                          <div id="id001" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="15"aria-valuemin="0" aria-valuemax="100" style="width:0%">{{porc_total_gastos| number:'1.1-2'}}%</div>
+                        </div>
+                      
+                        Ventas: <span class="pull-right strong">${{total_ventas}}</span>
+                         <div class="progress">
+                          <div id="id002" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100"aria-valuemin="0" aria-valuemax="100" style="width:0%">{{porc_total_ventas | number:'1.1-2'}}%</div>
+                        </div>
+                      
+                        Ganancias: <span class="pull-right strong">${{ganancias | number: '1.1-2'}}</span>
+                         <div class="progress">
+                          <div id="id003" class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="8"aria-valuemin="0" aria-valuemax="100" style="width:0%">{{porc_ganancias| number:'1.1-2'}}%</div>
+                        </div>
+
+                        IVA Saldo a favor: <span class="pull-right strong">${{iva_saldo_aFavor}}</span>
+                        <div class="progress">
+                         <div id="id004" class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="8"aria-valuemin="0" aria-valuemax="100" style="width:0%">{{porc_iva_saldo_aFavor | number: '1.1-2'}}%</div>
+                       </div>
+ 
+                        IVA a Pagar: <span class="pull-right strong">${{iva_aPagar}}</span>
+                        <div class="progress">
+                         <div id="id005" class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="8"aria-valuemin="0" aria-valuemax="100" style="width:0%">{{porc_iva_aPagar| number: '1.1-2'}}%</div>
+                       </div>
+
+                      IVA final: <span class="pull-right strong">${{iva_final | number: '1.1-2'}}</span>
+                      <div class="progress">
+                       <div id="id006" class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="8"aria-valuemin="0" aria-valuemax="100" style="width:0%">{{porc_iva_final| number: '1.1-2'}}%</div>
+                     </div>
+                  </div>
+
+            </ul>
+          </div>
+
+          <div class="span4 plan">
+            <div class="plan-name-silver">
+              <h2>Stock </h2>
+            </div>
+            <ul *ngFor="let Articulo of articulos">
+              <li class="plan-feature">
+                Articulo: {{Articulo.nombre}} 
+                - Stock: {{Articulo.stock}} 
+                - precio unitario: ${{Articulo.precio_venta}}
+                - precio total: $ {{Articulo.precio_venta * Articulo.stock}}
+              </li>
+            </ul>
+            Cantidad de articulos distintos: {{articulos.length}}  <br>
+            Valor total del stock: $ {{valor_stock}}
+          </div>
+
+      </div>
+  
+      <br>
+      <br>
+</div>
+
+
+
+
+

@@ -7,6 +7,7 @@ import { Articulo } from '../clases/articulo';
 import { Factura } from '../clases/factura';
 import { FacturaCompra } from '../clases/factura-compra';
 import { Rubro } from '../clases/rubro';
+import { ArticuloAgregado } from '../clases/articulo-agregado';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,37 @@ export class MiservicioService {
   empresa:Empresa;
 
   constructor(private http:HttpClient){
-    this.empresa = new Empresa('el laboratorio','Zanni 2018','Parana','4200220','laboratorio@programacion.com','15437',1);
+    this.empresa = new Empresa('TSP.srl','Av Laboratorio 04','Parana','4200220','laboratorio@programacion.com','15437',1);
+    this.comprobar_nulas();
+  }
+  fac:Factura[];
+  fac_com:FacturaCompra[];
+  comprobar_nulas()
+  {
+    this.obtenerFacturas().subscribe(data=>{this.fac = data; this.comprobar_facturas();})
+    this.obtenerFacturasCompra().subscribe(data=>{this.fac_com = data; this.comprobar_facturas_compra();})
+  }
+  comprobar_facturas()
+  {
+    for(let i =0; i<this.fac.length;i++)
+    {
+      if(this.fac[i].clienteId==null ||this.fac[i].numero_sucursal==null||this.fac[i].numero_factura==null||this.fac[i].total==null)
+      {
+        console.log("la idea es borrarla")
+        this.borrarFactura(this.fac[i].id).subscribe();
+      }
+    }
+  }
+  comprobar_facturas_compra()
+  {
+    for(let i =0; i<this.fac_com.length;i++)
+    {
+      if(this.fac_com[i].proveedorId==null ||this.fac_com[i].numero_sucursal==null||this.fac_com[i].numero_factura==null||this.fac_com[i].total==null)
+      {
+        console.log("la idea es borrarla")
+        this.borrarFacturaCompra(this.fac_com[i].id).subscribe();
+      }
+    }
   }
 
   //manejo de articulos
@@ -31,13 +62,12 @@ export class MiservicioService {
   {
     return this.http.delete(this.host + 'articulo/'+id)
   }
-
-  modificarArticulo(arti:Articulo, codigo:number, nombre:string, descripcion:string, rubro:Rubro, precio_compra:number, precio_venta:number, porc_iva:number, stock:number)
+  modificarArticulo(arti:Articulo, codigo:number, nombre:string, descripcion:string, rubroId:number, precio_compra:number, precio_venta:number, porc_iva:number, stock:number)
   {
     arti.codigo = codigo;
     arti.nombre = nombre;
     arti.descripcion = descripcion;
-    arti.rubro = rubro;
+    arti.rubroId = rubroId;
     arti.precio_compra = precio_compra;
     arti.precio_venta = precio_venta;
     arti.stock= stock;
@@ -58,6 +88,31 @@ export class MiservicioService {
   {
     return this.http.post(this.host + 'articulo', arti);
   }
+  //manejo de articulos agregados
+  obtenerArticulosAgregados()
+  {
+    return this.http.get<ArticuloAgregado[]>(this.host+'articulo_agregado');
+  }
+ 
+  borrarArticuloAregado(id:number)
+  {
+    return this.http.delete(this.host + 'articulo_agregado/'+id)
+  }
+
+  modificarArticuloAgregado(arti:ArticuloAgregado, cantidad:number, articuloId:number, facturaId:number, facturaCompraId:number)
+  {
+    arti.cantidad = cantidad;
+    arti.articuloId = articuloId;
+    arti.facturaId = facturaId;
+    arti.facturaCompraId = facturaCompraId;
+
+    return this.http.patch(this.host + 'articulo_agregado/'+arti.id,arti);
+  }
+  nuevoArticuloAgregado(arti:ArticuloAgregado)
+  {
+    return this.http.post(this.host + 'articulo_agregado', arti);
+  }
+
   //manejo de proveedores
   obtenerProveedores()
   {
@@ -177,6 +232,18 @@ export class MiservicioService {
   {
     return this.http.post(this.host + 'factura', fac);
   }
+  modificarFactura(fac:Factura, fac2:Factura)
+  {
+    fac.numero_sucursal=fac2.numero_sucursal;
+    fac.numero_factura=fac2.numero_factura;
+    fac.total=fac2.total;
+    fac.iva=fac2.iva;
+    fac.subtotal=fac2.subtotal;
+    fac.clienteId=fac2.clienteId;
+    fac.fecha= fac2.fecha;
+    fac.tipo=fac2.tipo;
+    return this.http.patch(this.host + 'factura/'+fac.id,fac)
+  }
 
 
   //manejo de facturas compra
@@ -195,6 +262,19 @@ export class MiservicioService {
   nuevoFacturaCompra(fac:FacturaCompra)
   {
     return this.http.post(this.host + 'factura_compra', fac);
+  }
+  modificarFacturaCompra(fac:FacturaCompra, fac2:FacturaCompra)
+  {
+    fac.fecha_factura=fac2.fecha_factura;
+    fac.numero_sucursal=fac2.numero_sucursal;
+    fac.numero_factura=fac2.numero_factura;
+    fac.total=fac2.total;
+    fac.iva=fac2.iva;
+    fac.subtotal=fac2.subtotal;
+    fac.proveedorId=fac2.proveedorId;
+    fac.fecha= fac2.fecha;
+    fac.tipo=fac2.tipo;
+    return this.http.patch(this.host + 'factura_compra/'+fac.id,fac)
   }
  
 

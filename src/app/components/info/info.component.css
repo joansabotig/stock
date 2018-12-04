@@ -1,0 +1,25 @@
+.container {
+
+    background-image: url('http://www.fondosblackberry.com/user-content/uploads/wall/mid/78/blue_vertical_linesceleste.jpg');
+    min-width: 100%;
+    min-height: 100% !important;
+    background-size: cover;
+    position: absolute;
+}
+.texto-titulo
+{
+    color: rgba(54, 54, 54, 0.849);
+    font-size: 55px;
+    text-shadow: 2px 2px #ffffff;
+}
+.texto-subtitulo
+{
+    color: rgba(54, 54, 54, 0.849);
+    font-size: 35px;
+    text-shadow: 2px 2px #ffffff;
+}
+.texto-creador
+{
+    color: rgba(54, 54, 54, 0.849);
+    font-size: 25px;
+}

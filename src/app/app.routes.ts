@@ -18,6 +18,7 @@ import { NuevaFacEgresoComponent } from './components/nueva-fac-egreso/nueva-fac
 import { NuevoRubroComponent } from './components/nuevo-rubro/nuevo-rubro.component';
 import { EditarRubroComponent } from './components/editar-rubro/editar-rubro.component';
 import { ListaRubroComponent } from './components/lista-rubro/lista-rubro.component';
+import { InfoComponent } from './components/info/info.component';
 export const routes: Routes = [
     {   path: 'nuevo_articulo' , component: NuevoArticuloComponent},
     {   path: 'editar_articulo/:id' , component: ModificarArticuloComponent},
@@ -37,6 +38,7 @@ export const routes: Routes = [
     {   path: 'nuevo_rubro' , component: NuevoRubroComponent},
     {   path: 'modificar_rubro/:id' , component: EditarRubroComponent},
     {   path: 'lista_rubro' , component: ListaRubroComponent},
+    {   path: 'info' , component: InfoComponent},
     {   path: '' , component: InicioComponent},
     {   path: '**', redirectTo: ''}
 

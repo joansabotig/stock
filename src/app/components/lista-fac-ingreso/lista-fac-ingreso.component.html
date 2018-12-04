@@ -7,7 +7,7 @@
           <a (click)="mostrar(Factura)" class="list-group-item list-group-item-blue">
             {{Factura.fecha |  date: "dd/MM/yyyy"}} 
             - n°{{Factura.numero_sucursal}}_{{Factura.numero_factura}}
-            - {{Factura.proveedor.nombre}} 
+            <!-- - {{Factura.proveedor.nombre}}  -->
             - ${{Factura.total}} 
             - Tipo: {{Factura.tipo}}
           </a>

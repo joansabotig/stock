@@ -27,6 +27,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { NuevoRubroComponent } from './components/nuevo-rubro/nuevo-rubro.component';
 import { ListaRubroComponent } from './components/lista-rubro/lista-rubro.component';
 import { EditarRubroComponent } from './components/editar-rubro/editar-rubro.component';
+import { InfoComponent } from './components/info/info.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { EditarRubroComponent } from './components/editar-rubro/editar-rubro.com
     ListaFacEgresoComponent,
     NuevoRubroComponent,
     ListaRubroComponent,
-    EditarRubroComponent
+    EditarRubroComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
