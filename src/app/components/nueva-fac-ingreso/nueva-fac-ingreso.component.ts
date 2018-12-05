@@ -48,6 +48,7 @@ export class NuevaFacIngresoComponent implements OnInit {
   cantidad_articulos:number=1;
   tipo:String;
 
+  articulos_select:Articulo[];
   articulos_mostrar:ArticuloMostrar[]=[];
   total_factura:number;
   iva_factura:number;
@@ -56,7 +57,7 @@ export class NuevaFacIngresoComponent implements OnInit {
   ngOnInit() {
     this.empresa = this.service.empresa;
     this.service.obtenerProveedores().subscribe(data=>{this.proveedores = data});
-    this.service.obtenerArticulos().subscribe(data=>{this.articulos = data});
+    this.service.obtenerArticulos().subscribe(data=>{this.articulos = data; this.articulos_select = data;});
   }
 
   calcular()
@@ -77,6 +78,7 @@ export class NuevaFacIngresoComponent implements OnInit {
           if(this.articulos[c].id == this.articulos_agregados[i].articuloId)
           {
             articulo_actual = this.articulos[c];
+
             encontrado = true;
           }
           c++;
@@ -108,14 +110,27 @@ export class NuevaFacIngresoComponent implements OnInit {
       {
         articulo = this.articulos[i];
          //saco el articulo del select para que no pueda ponerlo 2 veces en la misma factura
-        this.articulos.splice(i,1);
+       // this.articulos_select.splice(i,1);
       }
     }
+
+    let ya_esta_agregado=false;
+        for(let x=0; x<this.articulos_agregados.length;x++)
+        {
+          if(articulo.id == this.articulos_agregados[x].articuloId)
+          {
+            alert('Esta articulo ya fue agregado');
+            ya_esta_agregado = true;
+          }
+        }
+        if(!ya_esta_agregado){
+          var art_agr:ArticuloAgregado = new ArticuloAgregado(articulo.id,this.cantidad_articulos,null,this.id);
+          let art_mos:ArticuloMostrar = new ArticuloMostrar(this.cantidad_articulos,articulo);
+          this.articulos_mostrar.push(art_mos);
+          this.articulos_agregados.push(art_agr);
+        }
     
-    var art_agr:ArticuloAgregado = new ArticuloAgregado(articulo.id,this.cantidad_articulos,null,this.id);
-    let art_mos:ArticuloMostrar = new ArticuloMostrar(this.cantidad_articulos,articulo);
-    this.articulos_mostrar.push(art_mos);
-    this.articulos_agregados.push(art_agr);
+   
   }
  
   guardar_factura()
@@ -125,7 +140,6 @@ export class NuevaFacIngresoComponent implements OnInit {
     {
       this.calcular();
       this.tipo = (<HTMLInputElement>document.getElementById("select_tipo")).value;
-      console.log(this.tipo)
       factura = new FacturaCompra(this.proveedor.numero_sucursal,this.numero_factura,this.total_factura, this.iva_factura, this.subtotal_factura, this.proveedor.id, this.fecha_factura,this.tipo)
       this.service.modificarFacturaCompra(this.factura_actual,factura).subscribe(data=>{ this.redireccionar_a_vista();},err=>console.log(err));
       for(let j=0; j<this.articulos_agregados.length; j++)
@@ -194,7 +208,7 @@ export class NuevaFacIngresoComponent implements OnInit {
       if(this.articulos_mostrar[i]==art)
       {
         //vuelvo a poner el articulo en el select si lo saca de la factura.
-        this.articulos.push(this.articulos_mostrar[i].articulo);
+        //this.articulos_select.push(this.articulos_mostrar[i].articulo);
         //saco el articulo de la factura
         this.articulos_mostrar.splice(i,1);
         this.articulos_agregados.splice(i,1);

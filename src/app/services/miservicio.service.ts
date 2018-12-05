@@ -32,7 +32,7 @@ export class MiservicioService {
     {
       if(this.fac[i].clienteId==null ||this.fac[i].numero_sucursal==null||this.fac[i].numero_factura==null||this.fac[i].total==null)
       {
-        console.log("la idea es borrarla")
+
         this.borrarFactura(this.fac[i].id).subscribe();
       }
     }
@@ -43,7 +43,7 @@ export class MiservicioService {
     {
       if(this.fac_com[i].proveedorId==null ||this.fac_com[i].numero_sucursal==null||this.fac_com[i].numero_factura==null||this.fac_com[i].total==null)
       {
-        console.log("la idea es borrarla")
+
         this.borrarFacturaCompra(this.fac_com[i].id).subscribe();
       }
     }

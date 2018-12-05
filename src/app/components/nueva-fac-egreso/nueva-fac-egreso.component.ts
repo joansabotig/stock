@@ -131,7 +131,7 @@ export class NuevaFacEgresoComponent implements OnInit {
         //saco el articulo del select para que no pueda ponerlo 2 veces en la misma factura
         if(this.articulos[i].stock > this.cantidad_articulos)
         {
-          this.articulos.splice(i,1);
+          //this.articulos.splice(i,1);
         }
         
       }
@@ -144,10 +144,23 @@ export class NuevaFacEgresoComponent implements OnInit {
       }
       else
       {
-        var art_agr:ArticuloAgregado = new ArticuloAgregado(articulo.id,this.cantidad_articulos,this.id,null);
-        var art_mos = new ArticuloMostrar(this.cantidad_articulos,articulo)
-        this.articulos_mostrar.push(art_mos);
-        this.articulos_agregados.push(art_agr);
+        let ya_esta_agregado=false;
+        for(let x=0; x<this.articulos_agregados.length;x++)
+        {
+          if(articulo.id == this.articulos_agregados[x].articuloId)
+          {
+            alert('Esta articulo ya fue agregado');
+            ya_esta_agregado = true;
+          }
+        }
+        if(!ya_esta_agregado)
+        {
+          var art_agr:ArticuloAgregado = new ArticuloAgregado(articulo.id,this.cantidad_articulos,this.id,null);
+          var art_mos = new ArticuloMostrar(this.cantidad_articulos,articulo)
+          this.articulos_mostrar.push(art_mos);
+          this.articulos_agregados.push(art_agr);
+        }
+        
       }
   }
  
@@ -244,7 +257,7 @@ export class NuevaFacEgresoComponent implements OnInit {
       if(this.articulos_mostrar[i]==art)
       {
         //vuelvo a poner el articulo en el select si lo saca de la factura.
-        this.articulos.push(this.articulos_mostrar[i].articulo);
+        //this.articulos.push(this.articulos_mostrar[i].articulo);
         //saco el articulo de la factura
         this.articulos_mostrar.splice(i,1);
         this.articulos_agregados.splice(i,1);
