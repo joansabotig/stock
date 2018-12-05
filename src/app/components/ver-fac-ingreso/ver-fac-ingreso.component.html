@@ -69,7 +69,9 @@
               <th>Codigo</th>
               <th>Descripcion</th>
               <th >IVA</th>
-              <th>Subtotal</th>
+              <th *ngIf="factura.tipo == 'A'">Subtotal</th>
+              <th>Total</th>
+
             </tr>
           </thead>
           <tbody *ngFor="let Articulo of articulos_mostrar">
@@ -80,7 +82,7 @@
               <td>  {{Articulo.articulo.descripcion}}</td>
               <td>  {{Articulo.articulo.porc_iva}}%</td>
               <td *ngIf="factura.tipo == 'A'">  ${{Articulo.articulo.precio_compra * Articulo.cantidad}}</td>
-              <td *ngIf="factura.tipo == 'A'">  ${{Articulo.articulo.precio_compra * Articulo.cantidad + Articulo.articulo.precio_compra * Articulo.cantidad *Articulo.articulo.porc_iva / 100}}</td>
+              <td >  ${{Articulo.articulo.precio_compra * Articulo.cantidad + Articulo.articulo.precio_compra * Articulo.cantidad *Articulo.articulo.porc_iva / 100}}</td>
             </tr>
           </tbody>
         </table>
