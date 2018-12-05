@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceInicioService } from 'src/app/services/service-inicio.service';
 
 @Component({
   selector: ' info',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service2:ServiceInicioService) { }
 
   ngOnInit() {
   }
+  bandera:boolean=true;
 
+  iniciar()
+  {
+    this.service2.iniciar();
+  }
+  limpiarBase()
+  {
+    this.service2.limpiar();
+  }
 }
