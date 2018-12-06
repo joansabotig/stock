@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Factura } from 'src/app/clases/factura';
 import { MiservicioService } from 'src/app/services/miservicio.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cliente } from 'src/app/clases/cliente';
 import { Empresa } from 'src/app/clases/empresa';
 import { ArticuloAgregado } from 'src/app/clases/articulo-agregado';
@@ -16,7 +16,7 @@ import { ArticuloMostrar } from 'src/app/clases/articulo-mostrar';
 export class VerFacEgresoComponent implements OnInit {
 
   
-  constructor(private service:MiservicioService, private route:ActivatedRoute) {
+  constructor(private service:MiservicioService, private route:ActivatedRoute, private router:Router) {
    service.obtenerFactura(route.params['value']['id']).subscribe(data=>
     {
       this.factura = data;
@@ -51,6 +51,11 @@ export class VerFacEgresoComponent implements OnInit {
   articulos:ArticuloAgregado[]=[];
   articulos_filtrados:ArticuloAgregado[]=[];
   articulos_mostrar:ArticuloMostrar[]=[];
+
+  salir()
+  {
+    this.router.navigate(['/inicio']);
+  }
 
   filtrar()
   {

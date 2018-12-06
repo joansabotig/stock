@@ -178,10 +178,20 @@
                             <label class="control-label">Articulo</label>
                             <div class="form-group" style="width: 150%;" >
                               <select class="custom-select" required  id="select_articulo"  >
-                                <option  *ngFor="let Articulo of articulos" value="{{Articulo.id}}">{{Articulo.nombre}}</option>
+                                <option  *ngFor="let Articulo of articulos_select" value="{{Articulo.id}}">{{Articulo.nombre}}</option>
                               </select>                              
                             </div>
                             <button class="btn" (click)="agregar()">Agregar</button>
+                        </div>
+                    </div>
+                    <div class="col-md-1 col-lg-4">
+                        <div class="form-group">
+                            <label class="control-label">Rubro (Filtro)</label>
+                            <div class="form-group" style="width: 100%;" >
+                              <select (click)='actualizar_select()' class="custom-select" required  id="select_rubro"  >
+                                <option   *ngFor="let Rubro of rubros" value="{{Rubro.id}}">{{Rubro.nombre}}</option>
+                              </select>                              
+                            </div>
                         </div>
                     </div>
 

@@ -99,5 +99,5 @@ export class InicioComponent implements OnInit {
   }
 
 }
-//2180 lineas de codigo sin el inicio (solo logica y servidor)
+//2350 lineas de codigo sin el inicio (solo logica y servidor)
 // 1450 en vistas (sin css)

@@ -9,6 +9,7 @@ import { FacturaCompra } from 'src/app/clases/factura-compra';
 import { Router } from '@angular/router';
 import { Factura } from 'src/app/clases/factura';
 import { ArticuloMostrar } from 'src/app/clases/articulo-mostrar';
+import { Rubro } from 'src/app/clases/rubro';
 
 @Component({
   selector: 'nueva-fac-ingreso',
@@ -19,6 +20,7 @@ export class NuevaFacIngresoComponent implements OnInit {
 
   constructor(private service:MiservicioService, private router:Router)
   {
+    
     service.nuevoFacturaCompra(this.factura_actual).subscribe(data=>{
       service.obtenerFacturasCompra().subscribe(data=>{ 
         let aux:number =0;
@@ -30,10 +32,12 @@ export class NuevaFacIngresoComponent implements OnInit {
           } 
         }
         service.obtenerFacturaCompra(aux).subscribe(data=>{ this.factura_actual = data; this.id = data.id})
+        this.filtrar_articulos_select();
       })
     });
-
   }
+  
+  rubros: Rubro[];
   factura_actual: FacturaCompra;
   id:number;
   bandera_proveedor:boolean = false;//cambiar
@@ -44,22 +48,29 @@ export class NuevaFacIngresoComponent implements OnInit {
   proveedores:Proveedor[];
   fecha_factura:Date = new Date(); 
   articulos:Articulo[]=[];
+
   articulos_agregados:ArticuloAgregado[]=[];
   cantidad_articulos:number=1;
   tipo:String;
 
-  articulos_select:Articulo[];
+  articulos_select:Articulo[]=[];
   articulos_mostrar:ArticuloMostrar[]=[];
   total_factura:number;
   iva_factura:number;
   subtotal_factura:number;
 
+  
+
   ngOnInit() {
     this.empresa = this.service.empresa;
     this.service.obtenerProveedores().subscribe(data=>{this.proveedores = data});
-    this.service.obtenerArticulos().subscribe(data=>{this.articulos = data; this.articulos_select = data;});
+    this.service.obtenerArticulos().subscribe(data=>{this.articulos = data;});
+    this.service.obtenerRubros().subscribe(data=>{this.rubros = data;})
   }
-
+  actualizar_select()
+  {
+    this.filtrar_articulos_select();
+  }
   calcular()
   {
     //calcular el subtotal: obtener el articulo - precio compra. y multiplicarlo x la cantidad.
@@ -90,7 +101,30 @@ export class NuevaFacIngresoComponent implements OnInit {
     this.iva_factura = acum_iva;
     this.total_factura = this.subtotal_factura + this.iva_factura;
   }
-
+  filtrar_articulos_select()
+  {
+    var select_rubros = (<HTMLInputElement>document.getElementById('select_rubro')).value;
+    var rubro_actual:Rubro;
+    for(let i =0; i<this.rubros.length;i++)
+    {
+      if(this.rubros[i].id.toString() == select_rubros)
+      {
+        rubro_actual = this.rubros[i];
+      }
+    }
+    for(let i =0; i<this.articulos_select.length; i++)
+    {
+     this.articulos_select.splice(i);
+    }
+    for(let i =0; i<this.articulos.length; i++)
+    {
+      if(this.articulos[i].rubroId == rubro_actual.id)
+      {
+        //select_rubros= this.articulos[i].id.toString();
+        this.articulos_select.push(this.articulos[i])
+      }
+    }
+  }
   seleccionar_proveedor()
   {
     this.bandera_proveedor = true;

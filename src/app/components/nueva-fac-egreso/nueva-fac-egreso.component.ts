@@ -7,6 +7,7 @@ import { Articulo } from 'src/app/clases/articulo';
 import { ArticuloAgregado } from 'src/app/clases/articulo-agregado';
 import { Factura } from 'src/app/clases/factura';
 import { ArticuloMostrar } from 'src/app/clases/articulo-mostrar';
+import { Rubro } from 'src/app/clases/rubro';
 
 @Component({
   selector: 'nueva-fac-egreso',
@@ -29,6 +30,7 @@ export class NuevaFacEgresoComponent implements OnInit {
           } 
         }
         service.obtenerFactura(aux).subscribe(data=>{ this.factura_actual = data; this.id = data.id})
+        this.filtrar_articulos_select();
       })
     });
 
@@ -47,10 +49,11 @@ export class NuevaFacEgresoComponent implements OnInit {
   articulos_agregados:ArticuloAgregado[]=[];
   cantidad_articulos:number=1;
   tipo:String;
+  rubros:Rubro[]=[];
 
 
   articulos_mostrar:ArticuloMostrar[]=[];
-
+  articulos_select:Articulo[]=[];
   total_factura: number;
   subtotal_factura: number;
   iva_factura:number;
@@ -60,6 +63,7 @@ export class NuevaFacEgresoComponent implements OnInit {
     this.empresa = this.service.empresa;
     this.service.obtenerClientes().subscribe(data=>{this.clientes = data});
     this.service.obtenerArticulos().subscribe(data=>{this.articulos = data});
+    this.service.obtenerRubros().subscribe(data=>{this.rubros = data;})
   }
   calcular()
   {
@@ -91,6 +95,10 @@ export class NuevaFacEgresoComponent implements OnInit {
     this.iva_factura = acum_iva;
     this.total_factura = this.subtotal_factura + this.iva_factura;
   }
+  actualizar_select()
+  {
+    this.filtrar_articulos_select();
+  }
   obtenerNumeroFactura()
   {
     var numero:number=1;
@@ -108,6 +116,30 @@ export class NuevaFacEgresoComponent implements OnInit {
     numero++; //se le suma uno para la nueva factura
     this.numero_factura = numero;
     });
+  }
+  filtrar_articulos_select()
+  {
+    var select_rubros = (<HTMLInputElement>document.getElementById('select_rubro')).value;
+    var rubro_actual:Rubro;
+    for(let i =0; i<this.rubros.length;i++)
+    {
+      if(this.rubros[i].id.toString() == select_rubros)
+      {
+        rubro_actual = this.rubros[i];
+      }
+    }
+    for(let i =0; i<this.articulos_select.length; i++)
+    {
+     this.articulos_select.splice(i);
+    }
+    for(let i =0; i<this.articulos.length; i++)
+    {
+      if(this.articulos[i].rubroId == rubro_actual.id)
+      {
+        //select_rubros= this.articulos[i].id.toString();
+        this.articulos_select.push(this.articulos[i])
+      }
+    }
   }
   seleccionar_cliente()
   {

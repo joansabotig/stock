@@ -3,9 +3,10 @@
   <section class="content-header">
     <h1>
       Factura
-      <small>{{factura.numero_factura}}</small>
+      <b> {{factura.numero_factura}} </b>
       Tipo
-      <small>{{factura.tipo}}</small>
+      <b>{{factura.tipo}}</b>
+      
     </h1>
    
   </section>
@@ -98,23 +99,23 @@
           <table class="table">
             <tr>
               <th style="width:50%">Subtotal:</th>
-              <td>${{factura.subtotal}}</td>
+              <td>${{factura.subtotal |number: '1.1-2'}}</td>
             </tr>
             <tr *ngIf="factura.tipo == 'A'">
               <th>IVA (10.5%)</th>
-              <td>${{iva_10_5}}</td>
+              <td>${{iva_10_5 | number: '1.1-2'}}</td>
             </tr>
             <tr *ngIf="factura.tipo == 'A'">
               <th>IVA (21%)</th>
-              <td>${{iva_21}}</td>
+              <td>${{iva_21 | number: '1.1-2'}}</td>
             </tr>
             <tr *ngIf="factura.tipo == 'A'">
               <th>Total Iva:</th>
-              <td>${{factura.iva}}</td>
+              <td>${{factura.iva | number: '1.1-2'}}</td>
             </tr>
             <tr>
               <th>Total:</th>
-              <td>${{factura.total}}</td>
+              <td>${{factura.total | number: '1.1-2'}}</td>
             </tr>
           </table>
         </div>
@@ -125,4 +126,7 @@
     
   </section><!-- /.content -->
   <div class="clearfix"></div>
+  <button (click)="salir()" class="btn btn-primary" style=" margin-left: 2%; margin-top: 1px; margin-bottom: 10px;">
+      Salir
+    </button>
 </div><!-- /.content-wrapper -->

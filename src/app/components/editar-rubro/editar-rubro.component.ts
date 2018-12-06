@@ -26,9 +26,7 @@ export class EditarRubroComponent implements OnInit {
     this.servicio.modificarRubro(this.rubro_actual,this.nombre,this.descripcion)
     .subscribe(data=>{console.log('rubro modificado')});
     this.router.navigate(['/lista_rubro']);
-
   }
-
   iniciar()
   {
     this.nombre= this.rubro_actual.nombre;
@@ -38,8 +36,6 @@ export class EditarRubroComponent implements OnInit {
   {
     this.router.navigate(['/lista_rubro']);
   }
-
   ngOnInit() {
   }
-
 }
