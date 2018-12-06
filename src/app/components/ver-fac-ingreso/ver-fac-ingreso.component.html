@@ -97,7 +97,7 @@
         <p class="lead">Resumen</p>
         <div class="table-responsive">
           <table class="table">
-            <tr>
+            <tr *ngIf="factura.tipo == 'A'">
               <th style="width:50%">Subtotal:</th>
               <td>${{factura.subtotal |number: '1.1-2'}}</td>
             </tr>

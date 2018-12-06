@@ -22,4 +22,5 @@ export class InfoComponent implements OnInit {
   {
     this.service2.limpiar();
   }
+
 }

@@ -1,9 +1,19 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-6"*ngIf="bandera">
-			<h3 class="text-center text-primary">Lista de articulos
-      </h3>
-			<div class="list-group"  *ngFor="let Articulo of articulos">
+			<h3 class="text-center text-primary">Lista de articulos</h3>
+			<div class="col-md-1 col-lg-4">
+					<div class="form-group">
+							<h5>Filtro por rubro</h5>
+							<div class="form-group" style="width: 100%;" >
+								<select (click)='filtrar()' class="custom-select" required  id="select_rubro"  >
+									<option value="-1">Todos los rubros</option>
+									<option   *ngFor="let Rubro of rubros" value="{{Rubro.id}}">{{Rubro.nombre}}</option>
+								</select>                              
+							</div>
+					</div>
+			</div>
+			<div class="list-group"  *ngFor="let Articulo of articulos_mostrar">
 				<a (click)="mostrar(Articulo)" class="list-group-item list-group-item-blue">{{Articulo.nombre}}</a>
 
 			</div>

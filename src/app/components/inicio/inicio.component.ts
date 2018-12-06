@@ -25,7 +25,6 @@ export class InicioComponent implements OnInit {
             this.porcentajes();
           })
       })
-    
   }
   bandera:boolean = true;
   articulos:Articulo[]=[];
@@ -75,7 +74,6 @@ export class InicioComponent implements OnInit {
     var total_mov_iva = this.iva_aPagar + this.iva_saldo_aFavor;
     this.porc_total_gastos = (100/total_mov_dinero)*this.total_gastos;
 
-    
     this.porc_total_ventas =(100/total_mov_dinero)*this.total_ventas;
     this.porc_iva_aPagar = (100/total_mov_iva)*this.iva_aPagar;
     this.porc_iva_saldo_aFavor = (100/total_mov_iva)*this.iva_saldo_aFavor;
@@ -84,20 +82,18 @@ export class InicioComponent implements OnInit {
   }
   porcentajes()
   {
-    
     document.getElementById('id001').style.width=parseInt(this.porc_total_gastos.toString()).toString().concat('%');
     document.getElementById('id002').style.width=parseInt(this.porc_total_ventas.toString()).toString().concat('%');
     document.getElementById('id003').style.width=parseInt(this.porc_ganancias.toString()).toString().concat('%');
     document.getElementById('id004').style.width=parseInt(this.porc_iva_saldo_aFavor.toString()).toString().concat('%');
     document.getElementById('id005').style.width=parseInt(this.porc_iva_aPagar.toString()).toString().concat('%');
     document.getElementById('id006').style.width=parseInt(this.porc_iva_final.toString()).toString().concat('%');
-    
-    
-    
+
   }
   ngOnInit() {
   }
-
 }
-//2350 lineas de codigo sin el inicio (solo logica y servidor)
-// 1450 en vistas (sin css)
+//700 lineas de codigo del servidor
+//2000 lineas de codigo (solo logica)
+// 1500 en HTML (sin css)
+// = 4000!!

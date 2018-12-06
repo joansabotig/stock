@@ -13,25 +13,53 @@ import { MiservicioService } from './miservicio.service';
 })
 export class ServiceInicioService {
 
-
-
-
   constructor(private service:MiservicioService) { }
 
   rubros:Rubro[];
 
   limpiar()
   {
-    this.limpiar_rubros();
-    this.limpiar_articulos();
     this.limpiar_clientes();
     this.limpiar_proveedores();
+    this.limpiar_facturas();
+    this.limpiar_articulos_agregados();
+    this.limpiar_articulos();//cuando temrina llama a limpiar rubros
   }
   iniciar()
   {
     this.agregar_rubros();
     this.agregar_clientes();
     this.agregar_proveedores();
+  }
+  limpiar_articulos_agregados()
+  {
+    this.service.obtenerArticulosAgregados().subscribe(data=>
+      {
+        for(let i=0; i<data.length;i++)
+        {
+            this.service.borrarArticuloAregado(data[i].id).subscribe();
+        }
+        
+      })
+  }
+  limpiar_facturas()
+  {
+    this.service.obtenerFacturas().subscribe(data=>
+      {
+        for(let i=0; i<data.length;i++)
+        {
+          this.service.borrarFactura(data[i].id).subscribe();
+        }
+        
+      })
+      this.service.obtenerFacturasCompra().subscribe(data=>
+        {
+          for(let i=0; i<data.length;i++)
+          {
+            this.service.borrarFacturaCompra(data[i].id).subscribe();
+          }
+          
+        })
   }
   limpiar_rubros()
   {
@@ -41,15 +69,25 @@ export class ServiceInicioService {
         {
           this.service.borrarRubro(data[i].id).subscribe();
         }
+        
       })
   }
   limpiar_articulos()
   {
+    
     this.service.obtenerArticulos().subscribe(data=>
       {
         for(let i=0; i<data.length;i++)
         {
-          this.service.borrarArticulo(data[i].id).subscribe();
+          if(i==data.length-1)
+          {
+            this.service.borrarArticulo(data[i].id).subscribe(data=>{this.limpiar_rubros();});
+          }
+          else
+          {
+            this.service.borrarArticulo(data[i].id).subscribe();
+          }
+          
         }
       })
   }
@@ -73,7 +111,6 @@ export class ServiceInicioService {
         }
       })
   }
-
   agregar_rubros()
   {
     var rubro1:Rubro = new Rubro('Lacteos','Pasillo 1 Gondola 2');
