@@ -32,7 +32,7 @@ export class NuevaFacEgresoComponent implements OnInit {
         service.obtenerFactura(aux).subscribe(data=>{ this.factura_actual = data; this.id = data.id})
         this.filtrar_articulos_select();
       })
-    });
+    },err=>{this.router.navigate(['nueva_factura_egreso'])});
 
     this.obtenerNumeroFactura(); 
   }
@@ -51,8 +51,6 @@ export class NuevaFacEgresoComponent implements OnInit {
   tipo:String;
   rubros:Rubro[]=[];
 
-
-  articulos_mostrar:ArticuloMostrar[]=[];
   articulos_select:Articulo[]=[];
   total_factura: number;
   subtotal_factura: number;
@@ -136,7 +134,6 @@ export class NuevaFacEgresoComponent implements OnInit {
     {
       if(this.articulos[i].rubroId == rubro_actual.id)
       {
-        //select_rubros= this.articulos[i].id.toString();
         this.articulos_select.push(this.articulos[i])
       }
     }
@@ -159,41 +156,31 @@ export class NuevaFacEgresoComponent implements OnInit {
     {
       if(this.articulos[i].id.toString() == sel)
       {
-        articulo = this.articulos[i];
-        //saco el articulo del select para que no pueda ponerlo 2 veces en la misma factura
-        if(this.articulos[i].stock > this.cantidad_articulos)
-        {
-          //this.articulos.splice(i,1);
-        }
-        
+        articulo = this.articulos[i];        
       }
     }
-      //controlar que el stock de articulos esté disponible
-      if(articulo.stock < this.cantidad_articulos)
+    //controlar que el stock de articulos esté disponible
+    if(articulo.stock < this.cantidad_articulos)
+    {
+      alert('no hay suficientes ' + articulo.nombre + '. Hay ' + articulo.stock + ' y desea ' +this.cantidad_articulos)
+    }
+    else
+    {
+      let ya_esta_agregado=false;
+      for(let x=0; x<this.articulos_agregados.length;x++)
       {
-        
-        alert('no hay suficientes ' + articulo.nombre + '. Hay ' + articulo.stock + ' y desea ' +this.cantidad_articulos)
+        if(articulo.nombre == this.articulos_agregados[x].nombre) 
+        {
+          alert('Esta articulo ya fue agregado');
+          ya_esta_agregado = true;
+        }
       }
-      else
+      if(!ya_esta_agregado)
       {
-        let ya_esta_agregado=false;
-        for(let x=0; x<this.articulos_agregados.length;x++)
-        {
-          if(articulo.id == this.articulos_agregados[x].articuloId)
-          {
-            alert('Esta articulo ya fue agregado');
-            ya_esta_agregado = true;
-          }
-        }
-        if(!ya_esta_agregado)
-        {
-          var art_agr:ArticuloAgregado = new ArticuloAgregado(articulo.id,this.cantidad_articulos,this.id,null);
-          var art_mos = new ArticuloMostrar(this.cantidad_articulos,articulo)
-          this.articulos_mostrar.push(art_mos);
-          this.articulos_agregados.push(art_agr);
-        }
-        
+        var art_agr:ArticuloAgregado = new ArticuloAgregado(this.cantidad_articulos,this.id,null,articulo.nombre,articulo.descripcion,articulo.precio_compra,articulo.precio_venta,articulo.rubroId, articulo.porc_iva, articulo.id);
+        this.articulos_agregados.push(art_agr);
       }
+    }
   }
  
   guardar_factura()
@@ -204,31 +191,18 @@ export class NuevaFacEgresoComponent implements OnInit {
       this.calcular();
       this.tipo = (<HTMLInputElement>document.getElementById("select_tipo")).value;
       factura = new Factura(this.empresa.numero_sucursal, this.numero_factura,this.total_factura, this.iva_factura, this.subtotal_factura, this.cliente.id,this.fecha_factura, this.tipo)
-      // factura = new Factura(this.articulos_agregados,this.empresa,this.cliente, this.fecha_factura,this.tipo,this.numero_factura);
       this.service.modificarFactura(this.factura_actual,factura).subscribe(data=>{this.redireccionar_a_vista();},err=>console.log(err));
       for(let j=0; j<this.articulos_agregados.length; j++)
       {
         this.service.nuevoArticuloAgregado(this.articulos_agregados[j]).subscribe();
       }
       this.actualizar_stock();
-      
     }
   }
   redireccionar_a_vista()
   {
     var facturas:Factura[];
     this.router.navigate(['/ver_factura_egreso/'+ this.id]);
-    // this.service.obtenerFacturas().subscribe(data=>
-    //   {
-    //     facturas = data;
-    //     for(let i = 0; i<facturas.length; i++)
-    //     {
-    //       if(facturas[i].numero_factura == this.numero_factura)
-    //       {
-    //         this.router.navigate(['/ver_factura_egreso/'+ facturas[i].id]);
-    //       }
-    //     }
-    //   });
   }
   actualizar_stock()
   {
@@ -240,7 +214,7 @@ export class NuevaFacEgresoComponent implements OnInit {
       {
         if(this.articulos_agregados[i].articuloId == this.articulos[c].id)
         {
-          this.service.ArticuloQuitarStock(this.articulos[c],this.articulos_agregados[i].cantidad).subscribe(data=>{},err=>console.log(err));
+          this.service.ArticuloQuitarStock(this.articulos[c],this.articulos_agregados[i].cantidad).subscribe();
         }
         c++;
       }
@@ -282,20 +256,16 @@ export class NuevaFacEgresoComponent implements OnInit {
     }
     return retorno;
   }
-  quitar(art: ArticuloMostrar)
+  quitar(art:ArticuloAgregado)
   {
-    for(let i =0; i<this.articulos_mostrar.length;i++)
+    for(let i =0; i<this.articulos_agregados.length;i++)
     {
-      if(this.articulos_mostrar[i]==art)
+      if(this.articulos_agregados[i]==art)
       {
-        //vuelvo a poner el articulo en el select si lo saca de la factura.
-        //this.articulos.push(this.articulos_mostrar[i].articulo);
         //saco el articulo de la factura
-        this.articulos_mostrar.splice(i,1);
-        this.articulos_agregados.splice(i,1);
+        this.articulos_agregados.splice(i);
 
       }
     }
-   
   }
 }

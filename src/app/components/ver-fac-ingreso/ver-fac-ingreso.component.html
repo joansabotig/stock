@@ -75,15 +75,15 @@
 
             </tr>
           </thead>
-          <tbody *ngFor="let Articulo of articulos_mostrar">
+          <tbody *ngFor="let Articulo of articulos_filtrados">
             <tr>
               <td>  {{Articulo.cantidad}}</td>
-              <td>  {{Articulo.articulo.nombre}}</td>
-              <td>  {{Articulo.articulo.codigo}} </td>
-              <td>  {{Articulo.articulo.descripcion}}</td>
-              <td>  {{Articulo.articulo.porc_iva}}%</td>
-              <td *ngIf="factura.tipo == 'A'">  ${{Articulo.articulo.precio_compra * Articulo.cantidad}}</td>
-              <td >  ${{Articulo.articulo.precio_compra * Articulo.cantidad + Articulo.articulo.precio_compra * Articulo.cantidad *Articulo.articulo.porc_iva / 100}}</td>
+              <td>  {{Articulo.nombre}}</td>
+              <td>  {{Articulo.codigo}} </td>
+              <td>  {{Articulo.descripcion}}</td>
+              <td>  {{Articulo.porc_iva}}%</td>
+              <td *ngIf="factura.tipo == 'A'">  ${{Articulo.precio_compra * Articulo.cantidad}}</td>
+              <td >  ${{Articulo.precio_compra * Articulo.cantidad + Articulo.precio_compra * Articulo.cantidad *Articulo.porc_iva / 100}}</td>
             </tr>
           </tbody>
         </table>

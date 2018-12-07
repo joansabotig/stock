@@ -33,21 +33,21 @@
       <div class="col-sm-4 invoice-col">
         De
         <address>
-         <strong>{{cliente.nombre}}</strong><br>
-          Direccion: {{cliente.direccion}}<br>
-          Localidad: {{cliente.localidad}}<br>
-          Telefono: a {{cliente.telefono}} <br/>
-          Email: {{cliente.email}}
+         <strong>{{empresa.nombre}}</strong><br>
+          Direccion: {{empresa.direccion}}<br>
+          Localidad: {{empresa.localidad}}<br>
+          Telefono: a {{empresa.telefono}} <br/>
+          Email: {{empresa.email}}
         </address>
       </div><!-- /.col -->
       <div class="col-sm-4 invoice-col">
         Para
         <address>
-          <strong>{{empresa.nombre}}</strong><br>
-          Direccion: {{empresa.direccion}}<br>
-          Localidad: {{empresa.localidad}}<br>
-          Telefono: {{empresa.telefono}} <br/>
-          Email: {{empresa.email}}
+          <strong>{{cliente.nombre}}</strong><br>
+          Direccion: {{cliente.direccion}}<br>
+          Localidad: {{cliente.localidad}}<br>
+          Telefono: {{cliente.telefono}} <br/>
+          Email: {{cliente.email}}
         </address>
       </div><!-- /.col -->
       <div class="col-sm-4 invoice-col">
@@ -73,15 +73,15 @@
               <th>Total</th>
             </tr>
           </thead>
-          <tbody *ngFor="let Articulo of articulos_mostrar">
+          <tbody *ngFor="let Articulo of articulos_filtrados">
             <tr>
               <td>  {{Articulo.cantidad}}</td>
-              <td>  {{Articulo.articulo.nombre}}</td>
-              <td>  {{Articulo.articulo.codigo}} </td>
-              <td>  {{Articulo.articulo.descripcion}}</td>
-              <td>  {{Articulo.articulo.porc_iva}}%</td>
-              <td *ngIf="factura.tipo == 'A'" >  ${{Articulo.articulo.precio_venta * Articulo.cantidad}}</td>
-              <td>  ${{Articulo.articulo.precio_venta * Articulo.cantidad + Articulo.articulo.precio_venta * Articulo.cantidad *Articulo.articulo.porc_iva / 100}}</td>
+              <td>  {{Articulo.nombre}}</td>
+              <td>  {{Articulo.codigo}} </td>
+              <td>  {{Articulo.descripcion}}</td>
+              <td>  {{Articulo.porc_iva}}%</td>
+              <td *ngIf="factura.tipo == 'A'" >  ${{Articulo.precio_venta * Articulo.cantidad}}</td>
+              <td>  ${{Articulo.precio_venta * Articulo.cantidad + Articulo.precio_venta * Articulo.cantidad *Articulo.porc_iva / 100}}</td>
             </tr>
           </tbody>
         </table>

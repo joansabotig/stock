@@ -19,9 +19,10 @@ export class ServiceInicioService {
 
   limpiar()
   {
+    this.limpiar_facturas();
+
     this.limpiar_clientes();
     this.limpiar_proveedores();
-    this.limpiar_facturas();
     this.limpiar_articulos_agregados();
     this.limpiar_articulos();//cuando temrina llama a limpiar rubros
   }
@@ -45,21 +46,33 @@ export class ServiceInicioService {
   limpiar_facturas()
   {
     this.service.obtenerFacturas().subscribe(data=>
+    {
+      for(let i=0; i<data.length;i++)
       {
-        for(let i=0; i<data.length;i++)
+        if(i==data.length-1)
+        {
+          this.service.borrarFactura(data[i].id).subscribe(data=>{this.limpiar_clientes();});
+        }
+        else
         {
           this.service.borrarFactura(data[i].id).subscribe();
         }
-        
-      })
-      this.service.obtenerFacturasCompra().subscribe(data=>
+      }
+    })
+    this.service.obtenerFacturasCompra().subscribe(data=>
+    {
+      for(let i=0; i<data.length;i++)
+      {
+        if(i==data.length-1)
         {
-          for(let i=0; i<data.length;i++)
-          {
-            this.service.borrarFacturaCompra(data[i].id).subscribe();
-          }
-          
-        })
+          this.service.borrarFacturaCompra(data[i].id).subscribe(data=>{this.limpiar_proveedores();});
+        }
+        else
+        {
+          this.service.borrarFacturaCompra(data[i].id).subscribe();
+        }
+      }
+    })
   }
   limpiar_rubros()
   {

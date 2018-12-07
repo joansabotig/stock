@@ -48,9 +48,8 @@ export class VerFacEgresoComponent implements OnInit {
   cliente:Cliente;
   empresa:Empresa;
   todos_los_articulos:Articulo[]=[];
-  articulos:ArticuloAgregado[]=[];
-  articulos_filtrados:ArticuloAgregado[]=[];
-  articulos_mostrar:ArticuloMostrar[]=[];
+  articulos:ArticuloAgregado[]=[];//todos los articulos agregados se la bd.
+  articulos_filtrados:ArticuloAgregado[]=[];//los articulos agregados de esta factura.
 
   salir()
   {
@@ -64,40 +63,21 @@ export class VerFacEgresoComponent implements OnInit {
       if(this.articulos[i].facturaId == this.factura.id)
       {
         this.articulos_filtrados.push(this.articulos[i]);
-        let c=0;
-        let encontrado = false;
-        while(c<this.todos_los_articulos.length && !encontrado)
-        {
-          if(this.todos_los_articulos[c].id == this.articulos[i].articuloId)
-          {
-            encontrado= true;
-            let art_aux:ArticuloMostrar = new ArticuloMostrar(this.articulos[i].cantidad, this.todos_los_articulos[c]);
-            this.articulos_mostrar.push(art_aux)
-          }
-          c++;
-        }
       }
     }
   }
   calcular()
   {
-    for(let i=0; i<this.articulos_mostrar.length; i++)
+    for(let i=0; i<this.articulos_filtrados.length; i++)
     {
-      let articulo_actual:Articulo = this.articulos_mostrar[i].articulo;
-
-      if(articulo_actual.porc_iva == 21)
+      if(this.articulos_filtrados[i].porc_iva == 21)
       {
-        this.iva_21 += ((this.articulos_mostrar[i].cantidad * articulo_actual.precio_venta)/100)*21;
-
+        this.iva_21 += ((this.articulos_filtrados[i].cantidad * this.articulos_filtrados[i].precio_venta)/100)*21;
       }
-      if(articulo_actual.porc_iva == 10.5)
+      if(this.articulos_filtrados[i].porc_iva == 10.5)
       {
-        this.iva_10_5 += ((this.articulos_mostrar[i].cantidad * articulo_actual.precio_venta)/100)*10.5;
-
+        this.iva_10_5 += ((this.articulos_filtrados[i].cantidad * this.articulos_filtrados[i].precio_venta)/100)*10.5;
       }
-
     }
   }
-
-
 }

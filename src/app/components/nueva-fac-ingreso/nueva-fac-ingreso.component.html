@@ -160,7 +160,7 @@
                       <h4>Detalles de la lista:</h4>  
                     </div>
                     <div class="items-lista">
-                        <h5 *ngFor="let Articulos of articulos_mostrar"> cantidad: {{Articulos.cantidad}} - Articulo: {{Articulos.articulo.nombre}}
+                        <h5 *ngFor="let Articulos of articulos_agregados"> cantidad: {{Articulos.cantidad}} - Articulo: {{Articulos.nombre}}
                             <button (click)="quitar(Articulos)" class="btn btn-danger">X</button>
                         </h5>
                     </div>

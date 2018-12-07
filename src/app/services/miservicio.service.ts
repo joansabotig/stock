@@ -88,7 +88,9 @@ export class MiservicioService {
   {
     return this.http.post(this.host + 'articulo', arti);
   }
+
   //manejo de articulos agregados
+
   obtenerArticulosAgregados()
   {
     return this.http.get<ArticuloAgregado[]>(this.host+'articulo_agregado');
@@ -99,15 +101,6 @@ export class MiservicioService {
     return this.http.delete(this.host + 'articulo_agregado/'+id)
   }
 
-  modificarArticuloAgregado(arti:ArticuloAgregado, cantidad:number, articuloId:number, facturaId:number, facturaCompraId:number)
-  {
-    arti.cantidad = cantidad;
-    arti.articuloId = articuloId;
-    arti.facturaId = facturaId;
-    arti.facturaCompraId = facturaCompraId;
-
-    return this.http.patch(this.host + 'articulo_agregado/'+arti.id,arti);
-  }
   nuevoArticuloAgregado(arti:ArticuloAgregado)
   {
     return this.http.post(this.host + 'articulo_agregado', arti);
